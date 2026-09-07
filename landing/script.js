@@ -945,230 +945,75 @@ function setCurrentNavLink(sectionId) {
 }
 
 function initMotionSystem() {
-  if (motionReady || prefersReducedMotion.matches || !hasGsapRuntime()) {
+  if (motionReady || !hasGsapRuntime()) {
     return;
   }
 
   const { gsap, ScrollTrigger } = window;
   gsap.registerPlugin(ScrollTrigger);
 
-  const heroVisualImages = gsap.utils.toArray(".hero-visuals img");
-  const phoneMockup = document.querySelector(".phone-mockup");
-  const heroEntranceTargets = [...heroVisualImages];
-  if (phoneMockup) {
-    heroEntranceTargets.push(phoneMockup);
-  }
-  heroVisualImages.forEach((node) => {
-    node.dataset.motionOpacity = window.getComputedStyle(node).opacity || "1";
-  });
+  // Keep content fully readable; only position and progress respond to scrolling.
+  gsap.matchMedia().add("(prefers-reduced-motion: no-preference)", () => {
+    const revealTargets = [
+      ".proof-panel",
+      ".live-feed-panel",
+      ".story-panel",
+      ".faq-panel",
+      ".bottom-banner",
+    ];
 
-  gsap.set(
-    [
-      ".hero-kicker",
-      "#hero-title",
-      ".hero-sub",
-      ".hero-actions a",
-      ".hero-cv-teaser",
-      ...heroEntranceTargets,
-    ],
-    { autoAlpha: 0 }
-  );
+    revealTargets.forEach((selector) => {
+      const section = document.querySelector(selector);
+      if (!section) {
+        return;
+      }
 
-  const heroTimeline = gsap.timeline({ defaults: { ease: "power3.out" } });
-  heroTimeline
-    .fromTo(".hero-kicker", { y: 22 }, { y: 0, autoAlpha: 1, duration: 0.55 })
-    .fromTo("#hero-title", { y: 24 }, { y: 0, autoAlpha: 1, duration: 0.75 }, "-=0.28")
-    .fromTo(".hero-sub", { y: 20 }, { y: 0, autoAlpha: 1, duration: 0.6 }, "-=0.4")
-    .fromTo(
-      ".hero-actions a",
-      { y: 16 },
-      { y: 0, autoAlpha: 1, duration: 0.52, stagger: 0.09 },
-      "-=0.35"
-    )
-    .fromTo(
-      ".hero-cv-teaser",
-      { y: 16 },
-      { y: 0, autoAlpha: 1, duration: 0.5 },
-      "-=0.28"
-    )
-    .fromTo(
-      heroVisualImages,
-      { y: 24, scale: 0.93 },
-      {
-        y: 0,
-        scale: 1,
-        opacity: (_, target) => Number.parseFloat(target.dataset.motionOpacity || "1") || 1,
-        visibility: "visible",
-        duration: 0.9,
-        stagger: 0.1,
-      },
-      "-=0.7"
-    )
-    .fromTo(
-      phoneMockup,
-      { y: 30, scale: 0.96 },
-      { y: 0, scale: 1, autoAlpha: 1, duration: 0.9 },
-      "-=0.75"
-    );
-
-  if (phoneMockup) {
-    gsap.to(".phone-bezel", {
-      y: -16,
-      ease: "none",
-      scrollTrigger: {
-        trigger: ".hero-panel",
-        start: "top top",
-        end: "bottom top",
-        scrub: 0.8,
-      },
-    });
-  }
-
-  const revealTargets = [
-    ".proof-panel",
-    ".live-feed-panel",
-    ".story-panel",
-    ".faq-panel",
-    ".bottom-banner",
-  ];
-
-  revealTargets.forEach((selector) => {
-    const section = document.querySelector(selector);
-    if (!section) {
-      return;
-    }
-
-    gsap.from(section, {
-      y: 64,
-      autoAlpha: 0,
-      duration: 1,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: section,
-        start: "top 82%",
-        once: true,
-      },
-    });
-  });
-
-  [
-    [".proof-pipeline .proof-step", 0.12],
-    [".story-pipeline .story-step", 0.12],
-    [".faq-pipeline .faq-step", 0.12],
-  ].forEach(([selector, stagger]) => {
-    const nodes = gsap.utils.toArray(selector);
-    if (!nodes.length) {
-      return;
-    }
-
-    gsap.from(nodes, {
-      y: 36,
-      autoAlpha: 0,
-      duration: 0.78,
-      stagger,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: nodes[0].closest("section"),
-        start: "top 78%",
-        once: true,
-      },
-    });
-  });
-
-  [
-    [".hero-visuals img", ".hero-panel"],
-    [".skyline", ".bottom-banner"],
-  ].forEach(([target, triggerSelector]) => {
-    gsap.utils.toArray(target).forEach((node) => {
-      const cssOpacity = node.dataset.motionOpacity || window.getComputedStyle(node).opacity;
-      const finalOpacity = Number.parseFloat(cssOpacity) || 1;
-      gsap.fromTo(
-        node,
-        { scale: 0.84, opacity: finalOpacity * 0.48 },
-        {
-          scale: 1,
-          opacity: finalOpacity,
-          duration: 1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: triggerSelector,
-            start: "top 82%",
-            once: true,
-          },
-        }
-      );
-
-      gsap.to(node, {
-        opacity: finalOpacity * 0.45,
-        ease: "none",
+      gsap.from(section, {
+        y: 10,
+        duration: 0.35,
+        ease: "power3.out",
         scrollTrigger: {
-          trigger: triggerSelector,
-          start: "top top",
-          end: "bottom top",
-          scrub: 0.8,
+          trigger: section,
+          start: "top 82%",
+          once: true,
         },
       });
     });
-  });
 
-  gsap.utils
-    .toArray(".story-pipeline, .proof-pipeline, .faq-pipeline")
-    .forEach((pipeline) => {
-      const progressFill = pipeline.querySelector(
-        ".story-progress-fill, .proof-progress-fill, .faq-progress-fill"
-      );
-      if (progressFill) {
-        gsap.fromTo(
-          progressFill,
-          { scaleY: 0 },
-          {
-            scaleY: 1,
-            ease: "none",
-            transformOrigin: "top",
-            scrollTrigger: {
-              trigger: pipeline,
-              start: "top 70%",
-              end: "bottom 60%",
-              scrub: true,
-            },
-          }
+    gsap.utils
+      .toArray(".story-pipeline, .proof-pipeline, .faq-pipeline")
+      .forEach((pipeline) => {
+        const progressFill = pipeline.querySelector(
+          ".story-progress-fill, .proof-progress-fill, .faq-progress-fill"
         );
-      }
+        if (progressFill) {
+          gsap.fromTo(
+            progressFill,
+            { scaleY: 0 },
+            {
+              scaleY: 1,
+              ease: "none",
+              transformOrigin: "top",
+              scrollTrigger: {
+                trigger: pipeline,
+                start: "top 70%",
+                end: "bottom 60%",
+                scrub: true,
+              },
+            }
+          );
+        }
 
-      pipeline.querySelectorAll("li").forEach((step) => {
-        ScrollTrigger.create({
-          trigger: step,
-          start: "top 62%",
-          end: "bottom 38%",
-          onToggle: ({ isActive }) =>
-            step.classList.toggle("is-active", isActive),
+        pipeline.querySelectorAll("li").forEach((step) => {
+          ScrollTrigger.create({
+            trigger: step,
+            start: "top 62%",
+            end: "bottom 38%",
+            onToggle: ({ isActive }) =>
+              step.classList.toggle("is-active", isActive),
+          });
         });
       });
-    });
-
-  [
-    [".story-reveal", ".story-panel"],
-    [".proof-reveal", ".proof-panel"],
-    [".faq-reveal", ".faq-panel"],
-  ].forEach(([target, triggerSelector]) => {
-    const revealText = document.querySelector(target);
-    if (!revealText) {
-      return;
-    }
-    gsap.fromTo(
-      revealText,
-      { opacity: 0.28 },
-      {
-        opacity: 1,
-        ease: "none",
-        scrollTrigger: {
-          trigger: triggerSelector,
-          start: "top 80%",
-          end: "top 28%",
-          scrub: true,
-        },
-      }
-    );
   });
 
   setCurrentNavLink("home");
@@ -1210,6 +1055,9 @@ function queueLiveFeedMotion() {
 
   liveFeedMotionFrame = window.requestAnimationFrame(() => {
     liveFeedMotionFrame = 0;
+    if (prefersReducedMotion.matches) {
+      return;
+    }
     const { gsap, ScrollTrigger } = window;
 
     liveFeedBatchTriggers.forEach((trigger) => trigger.kill());
@@ -1226,24 +1074,22 @@ function queueLiveFeedMotion() {
     if (isMobileRail) {
       gsap.fromTo(
         cards,
-        { y: 14, autoAlpha: 0 },
-        { y: 0, autoAlpha: 1, duration: 0.56, ease: "power3.out", stagger: 0.05 }
+        { y: 6 },
+        { y: 0, duration: 0.25, ease: "power3.out" }
       );
       refreshMotion();
       return;
     }
 
-    gsap.set(cards, { y: 24, autoAlpha: 0 });
+    gsap.set(cards, { y: 6 });
     liveFeedBatchTriggers = ScrollTrigger.batch(cards, {
       start: "top 88%",
       once: true,
       onEnter: (batch) =>
         gsap.to(batch, {
           y: 0,
-          autoAlpha: 1,
-          duration: 0.72,
+          duration: 0.25,
           ease: "power3.out",
-          stagger: 0.08,
           overwrite: true,
         }),
     });
@@ -1263,6 +1109,9 @@ function queuePhonePreviewMotion() {
 
   phonePreviewMotionFrame = window.requestAnimationFrame(() => {
     phonePreviewMotionFrame = 0;
+    if (prefersReducedMotion.matches) {
+      return;
+    }
     const cards = window.gsap.utils.toArray(".phone-preview-list .phone-job-card");
     if (!cards.length) {
       return;
@@ -1270,13 +1119,11 @@ function queuePhonePreviewMotion() {
 
     window.gsap.fromTo(
       cards,
-      { y: 16, autoAlpha: 0 },
+      { y: 6 },
       {
         y: 0,
-        autoAlpha: 1,
-        duration: 0.58,
+        duration: 0.25,
         ease: "power3.out",
-        stagger: 0.07,
       }
     );
   });
@@ -2096,8 +1943,12 @@ function init() {
 
   if (typeof prefersReducedMotion.addEventListener === "function") {
     prefersReducedMotion.addEventListener("change", () => {
-      if (!prefersReducedMotion.matches) {
-        initMotionSystem();
+      if (prefersReducedMotion.matches && hasGsapRuntime()) {
+        liveFeedBatchTriggers.forEach((trigger) => trigger.kill());
+        liveFeedBatchTriggers = [];
+        const cards = ".live-job-card, .phone-job-card";
+        window.gsap.killTweensOf(cards);
+        window.gsap.set(cards, { clearProps: "transform" });
       }
     });
   }
