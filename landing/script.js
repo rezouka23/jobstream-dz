@@ -6,14 +6,12 @@ const STRINGS = {
         "Recevez gratuitement les offres d'emploi les plus récentes en Algérie sur Telegram : mises à jour toutes les 3 minutes, 4 sources, sans doublons.",
     },
     nav: {
-      home: "Accueil",
       jobsToday: "Offres du jour",
       cvMatch: "Matching CV",
-      proof: "Preuves",
-      feed: "Digest",
+      feed: "Dernières offres",
       story: "Méthode",
       faq: "FAQ",
-      join: "Recevoir les offres",
+      join: "Rejoindre sur Telegram",
     },
     hero: {
       kicker: "Nouvelles offres en direct sur Telegram",
@@ -21,8 +19,7 @@ const STRINGS = {
         "Offres fraîches en <span>Algérie.</span>",
       subtitle:
         "JobStream DZ surveille les plateformes qui recrutent, élimine les doublons et livre les nouvelles opportunités directement sur Telegram.",
-      join: "Recevoir les offres maintenant",
-      how: "Offres du jour",
+      join: "Rejoindre le canal Telegram",
       monumentAlt: "Monument des Martyrs",
       mapAlt: "Carte des offres en Algérie",
       flagAlt: "Drapeau algérien",
@@ -60,11 +57,11 @@ const STRINGS = {
     },
     feed: {
       title: "Dernier digest publié",
-      subtitle: "Les dernières offres envoyées sur Telegram, avec un aperçu local si le backend n'est pas disponible.",
+      subtitle: "Les dernières offres publiées sur le canal Telegram, à consulter directement ici.",
       loading: "Chargement du dernier digest...",
       empty: "Aucun digest n'est disponible pour le moment.",
       fallback: "Aperçu du digest",
-      fallbackNote: "Aperçu local affiché pendant que le flux live se reconnecte.",
+      fallbackNote: "Exemples d'offres récentes affichés pendant la reconnexion.",
       updatedPrefix: "Publié",
       statusPrefix: "Digest publié",
       sourceLabel: "Source",
@@ -139,7 +136,7 @@ const STRINGS = {
         },
         frequency: {
           question: "À quelle fréquence les offres arrivent ?",
-          answer: "Le flux est mis à jour toutes les 3 minutes lorsqu'il y a de nouvelles opportunités.",
+          answer: "Dès qu'une nouvelle offre apparaît sur une source, elle est publiée au cycle suivant, sur le canal comme sur le site.",
         },
         quality: {
           question: "Comment évitez-vous les doublons ?",
@@ -150,11 +147,16 @@ const STRINGS = {
     banner: {
       title: "Recevez les prochaines offres avant les autres.",
       subtitle: "Rejoignez JobStream DZ et gagnez du temps à chaque recherche.",
-      join: "Rejoindre JobStream DZ",
+      join: "Rejoindre le canal Telegram",
       footnote: "Gratuit, rapide, et pensé pour les chercheurs d'emploi en Algérie",
+    },
+    footer: {
+      telegram: "Canal Telegram",
+      copyright: "© 2026 JobStream DZ",
     },
     a11y: {
       nav: "Navigation principale",
+      footerNav: "Liens du pied de page",
       langSwitch: "Choix de la langue",
       workflow: "Étapes du produit",
       menu: "Ouvrir le menu",
@@ -167,14 +169,12 @@ const STRINGS = {
         "Get fresh Algeria job opportunities for free on Telegram: updates every 3 minutes, 4 sources, no duplicates.",
     },
     nav: {
-      home: "Home",
       jobsToday: "Today's jobs",
       cvMatch: "CV match",
-      proof: "Proof",
-      feed: "Digest",
+      feed: "Latest jobs",
       story: "Method",
       faq: "FAQ",
-      join: "Get job alerts",
+      join: "Join on Telegram",
     },
     hero: {
       kicker: "Fresh opportunities delivered on Telegram",
@@ -182,8 +182,7 @@ const STRINGS = {
         "Fresh jobs across <span>Algeria.</span>",
       subtitle:
         "JobStream DZ watches active hiring platforms, removes duplicate listings, and sends new opportunities straight to Telegram.",
-      join: "Get offers now",
-      how: "Today's jobs",
+      join: "Join the Telegram channel",
       monumentAlt: "Martyrs Memorial",
       mapAlt: "Map of opportunities in Algeria",
       flagAlt: "Algerian flag",
@@ -221,11 +220,11 @@ const STRINGS = {
     },
     feed: {
       title: "Latest published digest",
-      subtitle: "The latest jobs sent to Telegram, with a local preview when the backend is unavailable.",
+      subtitle: "The latest jobs posted to the Telegram channel, right here on the page.",
       loading: "Loading latest digest...",
       empty: "No digest is available yet.",
       fallback: "Digest preview",
-      fallbackNote: "Local preview shown while the live feed reconnects.",
+      fallbackNote: "Showing recent sample listings while the feed reconnects.",
       updatedPrefix: "Published",
       statusPrefix: "Digest published",
       sourceLabel: "Source",
@@ -300,7 +299,7 @@ const STRINGS = {
         },
         frequency: {
           question: "How often is it updated?",
-          answer: "The feed updates every 3 minutes when new opportunities are available.",
+          answer: "As soon as a new listing appears on a source, it is published in the next cycle, on the channel and on this site.",
         },
         quality: {
           question: "How do you avoid duplicates?",
@@ -311,11 +310,16 @@ const STRINGS = {
     banner: {
       title: "Get the next opportunities before everyone else.",
       subtitle: "Join JobStream DZ and save time every day.",
-      join: "Join JobStream DZ",
+      join: "Join the Telegram channel",
       footnote: "Free, fast, and built for job seekers in Algeria",
+    },
+    footer: {
+      telegram: "Telegram channel",
+      copyright: "© 2026 JobStream DZ",
     },
     a11y: {
       nav: "Main navigation",
+      footerNav: "Footer links",
       langSwitch: "Language switcher",
       workflow: "Product workflow",
       menu: "Open menu",
@@ -328,14 +332,12 @@ const STRINGS = {
         "استقبل أحدث فرص العمل في الجزائر مجانا عبر تيليجرام: تحديث كل 3 دقائق، 4 مصادر، وبدون تكرار.",
     },
     nav: {
-      home: "الرئيسية",
       jobsToday: "وظائف اليوم",
       cvMatch: "مطابقة السيرة",
-      proof: "الدليل",
-      feed: "الملخص",
+      feed: "آخر الوظائف",
       story: "الطريقة",
       faq: "الأسئلة",
-      join: "استقبل الوظائف",
+      join: "انضم عبر تيليجرام",
     },
     hero: {
       kicker: "فرص جديدة مباشرة على تيليجرام",
@@ -343,8 +345,7 @@ const STRINGS = {
         "أحدث فرص العمل في <span>الجزائر.</span>",
       subtitle:
         "يراقب JobStream DZ المنصات النشطة، يزيل التكرار، ويرسل الفرص الجديدة مباشرة إلى تيليجرام.",
-      join: "استقبل الوظائف الآن",
-      how: "وظائف اليوم",
+      join: "انضم إلى قناة تيليجرام",
       monumentAlt: "مقام الشهيد",
       mapAlt: "خريطة فرص العمل في الجزائر",
       flagAlt: "العلم الجزائري",
@@ -382,11 +383,11 @@ const STRINGS = {
     },
     feed: {
       title: "آخر ملخص منشور",
-      subtitle: "آخر الوظائف المنشورة على تيليجرام، مع معاينة محلية عند غياب الواجهة الخلفية.",
+      subtitle: "آخر الوظائف المنشورة على قناة تيليجرام، مباشرة في هذه الصفحة.",
       loading: "جار تحميل آخر ملخص...",
       empty: "لا يوجد ملخص منشور حاليا.",
       fallback: "معاينة الملخص",
-      fallbackNote: "تظهر معاينة محلية أثناء إعادة الاتصال بالتدفق المباشر.",
+      fallbackNote: "نعرض أمثلة من العروض الأخيرة أثناء إعادة الاتصال.",
       updatedPrefix: "نشر في",
       statusPrefix: "ملخص منشور",
       sourceLabel: "المصدر",
@@ -461,7 +462,7 @@ const STRINGS = {
         },
         frequency: {
           question: "كم مرة تتحدث العروض؟",
-          answer: "يتم تحديث القناة كل 3 دقائق عند توفر فرص جديدة.",
+          answer: "بمجرد ظهور عرض جديد في أحد المصادر، يُنشر في الدورة التالية على القناة وعلى الموقع.",
         },
         quality: {
           question: "كيف تمنعون التكرار؟",
@@ -472,11 +473,16 @@ const STRINGS = {
     banner: {
       title: "استقبل الفرص القادمة قبل غيرك.",
       subtitle: "انضم إلى JobStream DZ ووفّر وقتك في البحث اليومي.",
-      join: "انضم إلى JobStream DZ",
+      join: "انضم إلى قناة تيليجرام",
       footnote: "مجاني، سريع، ومصمم للباحثين عن عمل في الجزائر",
+    },
+    footer: {
+      telegram: "قناة تيليجرام",
+      copyright: "© 2026 JobStream DZ",
     },
     a11y: {
       nav: "التنقل الرئيسي",
+      footerNav: "روابط التذييل",
       langSwitch: "تبديل اللغة",
       workflow: "خطوات سير العمل",
       menu: "فتح القائمة",

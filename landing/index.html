@@ -15,7 +15,7 @@
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=20260927-phase1" />
+    <link rel="stylesheet" href="styles.css?v=20260927-phase2" />
   </head>
   <body>
     <svg class="icon-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
@@ -88,11 +88,9 @@
 
         <div class="site-menu" id="site-menu">
           <nav class="main-nav" aria-label="Navigation principale" data-i18n-aria-label="a11y.nav">
-            <a href="#" data-i18n="nav.home">Accueil</a>
+            <a href="#live-feed" data-i18n="nav.feed">Dernières offres</a>
             <a href="/jobs-today/" data-i18n="nav.jobsToday">Offres du jour</a>
             <a href="/cv-match/" data-i18n="nav.cvMatch">Matching CV</a>
-            <a href="#proof" data-i18n="nav.proof">Preuves</a>
-            <a href="#live-feed" data-i18n="nav.feed">Digest</a>
             <a href="#story" data-i18n="nav.story">Méthode</a>
             <a href="#faq" data-i18n="nav.faq">FAQ</a>
           </nav>
@@ -107,7 +105,7 @@
         <div class="topbar-actions">
           <a href="https://t.me/jobstream_dz" target="_blank" rel="noreferrer" class="join-btn">
             <svg class="icon plane" aria-hidden="true"><use href="#icon-paper-plane"></use></svg>
-            <span data-i18n="nav.join">Recevoir les offres</span>
+            <span data-i18n="nav.join">Rejoindre sur Telegram</span>
           </a>
 
           <button
@@ -136,9 +134,8 @@
             <div class="hero-actions">
               <a href="https://t.me/jobstream_dz" target="_blank" rel="noreferrer" class="btn-primary">
                 <svg class="icon plane" aria-hidden="true"><use href="#icon-paper-plane"></use></svg>
-                <span data-i18n="hero.join">Recevoir les offres maintenant</span>
+                <span data-i18n="hero.join">Rejoindre le canal Telegram</span>
               </a>
-              <a href="/jobs-today/" class="btn-secondary" data-i18n="hero.how">Offres du jour</a>
             </div>
 
             <a href="/cv-match/" class="hero-cv-teaser" aria-label="Importez votre CV pour trouver les offres qui vous correspondent" data-i18n-aria-label="hero.cvTeaser.ariaLabel">
@@ -243,7 +240,7 @@
                   <svg class="icon"><use href="#icon-briefcase"></use></svg>
                 </span>
                 <h2 id="live-feed-title" data-i18n="feed.title">Dernier digest publié</h2>
-                <p data-i18n="feed.subtitle">Les dernières offres envoyées sur Telegram, avec un aperçu local si le backend n'est pas disponible.</p>
+                <p data-i18n="feed.subtitle">Les dernières offres publiées sur le canal Telegram, à consulter directement ici.</p>
               </div>
               <p class="live-feed-status" data-live-feed-status aria-live="polite" aria-atomic="true"></p>
             </div>
@@ -399,7 +396,7 @@
               <span class="faq-step-index" aria-hidden="true">02</span>
               <div class="faq-step-body">
                 <h3 data-i18n="faq.items.frequency.question">À quelle fréquence les offres arrivent ?</h3>
-                <p data-i18n="faq.items.frequency.answer">Le flux est mis à jour toutes les 3 minutes lorsqu'il y a de nouvelles opportunités.</p>
+                <p data-i18n="faq.items.frequency.answer">Dès qu'une nouvelle offre apparaît sur une source, elle est publiée au cycle suivant, sur le canal comme sur le site.</p>
               </div>
             </li>
 
@@ -422,16 +419,37 @@
             <p data-i18n="banner.subtitle">Rejoignez JobStream DZ et gagnez du temps à chaque recherche.</p>
             <a href="https://t.me/jobstream_dz" target="_blank" rel="noreferrer" class="join-btn banner-btn">
               <svg class="icon plane" aria-hidden="true"><use href="#icon-paper-plane"></use></svg>
-              <span data-i18n="banner.join">Rejoindre JobStream DZ</span>
+              <span data-i18n="banner.join">Rejoindre le canal Telegram</span>
             </a>
             <small data-i18n="banner.footnote">Gratuit, rapide, et pensé pour les chercheurs d'emploi en Algérie</small>
           </div>
         </section>
       </main>
+
+      <footer class="site-footer">
+        <a href="#" class="brand" aria-label="JobStream DZ">
+          <img src="assets/logo.png" alt="JobStream DZ" />
+        </a>
+
+        <nav class="footer-nav" aria-label="Liens du pied de page" data-i18n-aria-label="a11y.footerNav">
+          <a href="https://t.me/jobstream_dz" target="_blank" rel="noreferrer" data-i18n="footer.telegram">Canal Telegram</a>
+          <a href="/jobs-today/" data-i18n="nav.jobsToday">Offres du jour</a>
+          <a href="/cv-match/" data-i18n="nav.cvMatch">Matching CV</a>
+          <a href="#faq" data-i18n="nav.faq">FAQ</a>
+        </nav>
+
+        <div class="lang-switch" role="group" aria-label="Choix de la langue" data-i18n-aria-label="a11y.langSwitch">
+          <button type="button" data-lang="fr" class="lang-btn is-active">FR</button>
+          <button type="button" data-lang="en" class="lang-btn">EN</button>
+          <button type="button" data-lang="ar" class="lang-btn">AR</button>
+        </div>
+
+        <small class="footer-copyright" data-i18n="footer.copyright">© 2026 JobStream DZ</small>
+      </footer>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-    <script src="script.js?v=20260927-phase1"></script>
+    <script src="script.js?v=20260927-phase2"></script>
   </body>
 </html>
