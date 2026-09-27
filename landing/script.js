@@ -983,26 +983,20 @@ function initMotionSystem() {
     gsap.utils
       .toArray(".story-pipeline, .proof-pipeline, .faq-pipeline")
       .forEach((pipeline) => {
-        const progressFill = pipeline.querySelector(
-          ".story-progress-fill, .proof-progress-fill, .faq-progress-fill"
+        gsap.fromTo(
+          pipeline,
+          { "--progress": 0 },
+          {
+            "--progress": 1,
+            ease: "none",
+            scrollTrigger: {
+              trigger: pipeline,
+              start: "top 70%",
+              end: "bottom 60%",
+              scrub: true,
+            },
+          }
         );
-        if (progressFill) {
-          gsap.fromTo(
-            progressFill,
-            { scaleY: 0 },
-            {
-              scaleY: 1,
-              ease: "none",
-              transformOrigin: "top",
-              scrollTrigger: {
-                trigger: pipeline,
-                start: "top 70%",
-                end: "bottom 60%",
-                scrub: true,
-              },
-            }
-          );
-        }
 
         pipeline.querySelectorAll("li").forEach((step) => {
           ScrollTrigger.create({
