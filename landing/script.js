@@ -3,7 +3,7 @@ const STRINGS = {
     meta: {
       title: "JobStream DZ | Offres d'emploi fraîches en Algérie",
       description:
-        "Consultez les offres d'emploi récentes en Algérie dans un flux multi-source filtré et sans doublons.",
+        "Recevez gratuitement les offres d'emploi les plus récentes en Algérie sur Telegram : mises à jour toutes les 3 minutes, 4 sources, sans doublons.",
     },
     nav: {
       home: "Accueil",
@@ -16,17 +16,17 @@ const STRINGS = {
       join: "Recevoir les offres",
     },
     hero: {
-      kicker: "Nouvelles offres dans un flux ouvert",
+      kicker: "Nouvelles offres en direct sur Telegram",
       title:
         "Offres fraîches en <span>Algérie.</span>",
       subtitle:
-        "JobStream DZ surveille les plateformes qui recrutent, élimine les doublons et rassemble les nouvelles opportunités dans une interface ouverte.",
-      join: "Explorer les offres",
-      how: "Matching CV",
+        "JobStream DZ surveille les plateformes qui recrutent, élimine les doublons et livre les nouvelles opportunités directement sur Telegram.",
+      join: "Recevoir les offres maintenant",
+      how: "Offres du jour",
       monumentAlt: "Monument des Martyrs",
       mapAlt: "Carte des offres en Algérie",
       flagAlt: "Drapeau algérien",
-      phoneAlt: "Aperçu du flux JobStream DZ",
+      phoneAlt: "Aperçu du canal Telegram JobStream DZ",
       phoneLinkLabel: "Voir le digest des offres",
       cvTeaser: {
         title: "Importez votre CV",
@@ -52,15 +52,15 @@ const STRINGS = {
           title: "4 sources vérifiées",
           description: "Les plateformes actives sont regroupées dans une seule lecture.",
         },
-        openSource: {
-          title: "100% open source",
-          description: "Une base auto-hébergeable que vous pouvez adapter à votre propre flux d'emploi.",
+        telegram: {
+          title: "100% gratuit sur Telegram",
+          description: "Un canal mobile, rapide et accessible dès que vous cherchez un poste.",
         },
       },
     },
     feed: {
       title: "Dernier digest publié",
-      subtitle: "Les dernières offres de la feuille configurée, avec un aperçu local si le backend n'est pas disponible.",
+      subtitle: "Les dernières offres envoyées sur Telegram, avec un aperçu local si le backend n'est pas disponible.",
       loading: "Chargement du dernier digest...",
       empty: "Aucun digest n'est disponible pour le moment.",
       fallback: "Aperçu du digest",
@@ -69,7 +69,7 @@ const STRINGS = {
       statusPrefix: "Digest publié",
       sourceLabel: "Source",
       apply: "Postuler",
-      more: "Tester le matching CV",
+      more: "Voir plus d'offres sur Telegram",
       untitled: "Offre sans titre",
       unknownCompany: "Entreprise non précisée",
       unknownLocation: "Lieu non précisé",
@@ -92,7 +92,7 @@ const STRINGS = {
       },
     },
     phonePreview: {
-      eyebrow: "Flux d'offres en direct",
+      eyebrow: "Digest Telegram en direct",
       fallbackEyebrow: "Aperçu du digest",
       badgeLive: "Live",
       badgePreview: "Aperçu",
@@ -119,23 +119,23 @@ const STRINGS = {
           description: "Les doublons, répétitions et signaux faibles sont réduits avant publication.",
         },
         deliver: {
-          title: "Publication web",
+          title: "Publication Telegram",
           description: "Les offres prêtes à consulter arrivent dans un format mobile et partageable.",
         },
         feed: {
           title: "Flux en direct sur le site",
-          description: "La même feuille alimente le flux du site et le moteur de matching CV.",
+          description: "Le même digest alimente le flux du site en temps réel — consultable sans Telegram.",
         },
       },
     },
     faq: {
       eyebrow: "Bon à savoir",
       title: "Questions fréquentes",
-      subtitle: "L'essentiel avant de déployer votre propre instance.",
+      subtitle: "L'essentiel avant de rejoindre le canal.",
       items: {
         free: {
           question: "Est-ce vraiment gratuit ?",
-          answer: "Oui. Le code est publié sous licence MIT et peut être auto-hébergé.",
+          answer: "Oui. L'accès au canal JobStream DZ est totalement gratuit.",
         },
         frequency: {
           question: "À quelle fréquence les offres arrivent ?",
@@ -143,15 +143,15 @@ const STRINGS = {
         },
         quality: {
           question: "Comment évitez-vous les doublons ?",
-          answer: "Chaque annonce reçoit une empreinte stable pour limiter les répétitions dans la feuille.",
+          answer: "Chaque annonce passe par un filtrage dédié pour limiter les répétitions dans le canal.",
         },
       },
     },
     banner: {
-      title: "Trouvez les offres adaptées à votre profil.",
-      subtitle: "Importez votre CV et comparez-le aux offres récentes de votre instance.",
-      join: "Tester le matching CV",
-      footnote: "Open source, auto-hébergeable et pensé pour les chercheurs d'emploi",
+      title: "Recevez les prochaines offres avant les autres.",
+      subtitle: "Rejoignez JobStream DZ et gagnez du temps à chaque recherche.",
+      join: "Rejoindre JobStream DZ",
+      footnote: "Gratuit, rapide, et pensé pour les chercheurs d'emploi en Algérie",
     },
     a11y: {
       nav: "Navigation principale",
@@ -164,7 +164,7 @@ const STRINGS = {
     meta: {
       title: "JobStream DZ | Fresh jobs in Algeria",
       description:
-        "Browse recent Algeria job opportunities in an open, multi-source, duplicate-filtered feed.",
+        "Get fresh Algeria job opportunities for free on Telegram: updates every 3 minutes, 4 sources, no duplicates.",
     },
     nav: {
       home: "Home",
@@ -177,17 +177,17 @@ const STRINGS = {
       join: "Get job alerts",
     },
     hero: {
-      kicker: "Fresh opportunities in an open feed",
+      kicker: "Fresh opportunities delivered on Telegram",
       title:
         "Fresh jobs across <span>Algeria.</span>",
       subtitle:
-        "JobStream DZ watches active hiring platforms, removes duplicate listings, and gathers new opportunities in an open interface.",
-      join: "Explore jobs",
-      how: "CV match",
+        "JobStream DZ watches active hiring platforms, removes duplicate listings, and sends new opportunities straight to Telegram.",
+      join: "Get offers now",
+      how: "Today's jobs",
       monumentAlt: "Martyrs Memorial",
       mapAlt: "Map of opportunities in Algeria",
       flagAlt: "Algerian flag",
-      phoneAlt: "Preview of the JobStream DZ job feed",
+      phoneAlt: "Preview of JobStream DZ Telegram channel",
       phoneLinkLabel: "See the jobs digest",
       cvTeaser: {
         title: "Upload your CV",
@@ -213,15 +213,15 @@ const STRINGS = {
           title: "4 verified sources",
           description: "Active platforms are combined into one focused reading flow.",
         },
-        openSource: {
-          title: "100% open source",
-          description: "A self-hosted foundation you can adapt to your own job feed.",
+        telegram: {
+          title: "100% free on Telegram",
+          description: "A fast mobile channel you can open the moment you start searching.",
         },
       },
     },
     feed: {
       title: "Latest published digest",
-      subtitle: "The latest jobs from the configured sheet, with a local preview when the backend is unavailable.",
+      subtitle: "The latest jobs sent to Telegram, with a local preview when the backend is unavailable.",
       loading: "Loading latest digest...",
       empty: "No digest is available yet.",
       fallback: "Digest preview",
@@ -230,7 +230,7 @@ const STRINGS = {
       statusPrefix: "Digest published",
       sourceLabel: "Source",
       apply: "Apply now",
-      more: "Try CV match",
+      more: "See more jobs on Telegram",
       untitled: "Untitled role",
       unknownCompany: "Unknown company",
       unknownLocation: "Unknown location",
@@ -253,7 +253,7 @@ const STRINGS = {
       },
     },
     phonePreview: {
-      eyebrow: "Live job feed",
+      eyebrow: "Live Telegram digest",
       fallbackEyebrow: "Digest preview",
       badgeLive: "Live",
       badgePreview: "Preview",
@@ -280,23 +280,23 @@ const STRINGS = {
           description: "Duplicates, repeated posts, and weak signals are reduced before publishing.",
         },
         deliver: {
-          title: "Web publishing",
+          title: "Telegram delivery",
           description: "Ready-to-review roles arrive in a mobile, shareable format.",
         },
         feed: {
           title: "Live on-site feed",
-          description: "The same sheet powers the live site feed and CV matching engine.",
+          description: "The same digest powers the on-site feed in real time — no Telegram needed.",
         },
       },
     },
     faq: {
       eyebrow: "Good to know",
       title: "Frequently asked questions",
-      subtitle: "What you should know before deploying your own instance.",
+      subtitle: "What you should know before joining.",
       items: {
         free: {
           question: "Is it really free?",
-          answer: "Yes. The code is available under the MIT License and can be self-hosted.",
+          answer: "Yes. Access to the JobStream DZ Telegram channel is completely free.",
         },
         frequency: {
           question: "How often is it updated?",
@@ -309,10 +309,10 @@ const STRINGS = {
       },
     },
     banner: {
-      title: "Find jobs that fit your profile.",
-      subtitle: "Upload your CV and compare it with recent jobs from your instance.",
-      join: "Try CV match",
-      footnote: "Open source, self-hosted, and built for job seekers",
+      title: "Get the next opportunities before everyone else.",
+      subtitle: "Join JobStream DZ and save time every day.",
+      join: "Join JobStream DZ",
+      footnote: "Free, fast, and built for job seekers in Algeria",
     },
     a11y: {
       nav: "Main navigation",
@@ -323,9 +323,9 @@ const STRINGS = {
   },
   ar: {
     meta: {
-      title: "JobStream DZ | أحدث وظائف الجزائر",
+      title: "JobStream DZ | أحدث وظائف الجزائر على تيليجرام",
       description:
-        "تصفح أحدث فرص العمل في الجزائر ضمن قائمة مفتوحة متعددة المصادر وبدون تكرار.",
+        "استقبل أحدث فرص العمل في الجزائر مجانا عبر تيليجرام: تحديث كل 3 دقائق، 4 مصادر، وبدون تكرار.",
     },
     nav: {
       home: "الرئيسية",
@@ -338,17 +338,17 @@ const STRINGS = {
       join: "استقبل الوظائف",
     },
     hero: {
-      kicker: "فرص جديدة في قائمة مفتوحة",
+      kicker: "فرص جديدة مباشرة على تيليجرام",
       title:
         "أحدث فرص العمل في <span>الجزائر.</span>",
       subtitle:
-        "يراقب JobStream DZ المنصات النشطة، يزيل التكرار، ويجمع الفرص الجديدة في واجهة مفتوحة.",
-      join: "تصفح الوظائف",
-      how: "مطابقة السيرة",
+        "يراقب JobStream DZ المنصات النشطة، يزيل التكرار، ويرسل الفرص الجديدة مباشرة إلى تيليجرام.",
+      join: "استقبل الوظائف الآن",
+      how: "وظائف اليوم",
       monumentAlt: "مقام الشهيد",
       mapAlt: "خريطة فرص العمل في الجزائر",
       flagAlt: "العلم الجزائري",
-      phoneAlt: "معاينة قائمة وظائف JobStream DZ",
+      phoneAlt: "معاينة قناة JobStream DZ على تيليجرام",
       phoneLinkLabel: "شاهد ملخص الوظائف",
       cvTeaser: {
         title: "حمّل سيرتك الذاتية",
@@ -374,15 +374,15 @@ const STRINGS = {
           title: "4 مصادر موثوقة",
           description: "تجتمع المنصات النشطة في قراءة واحدة مركزة.",
         },
-        openSource: {
-          title: "مفتوح المصدر 100%",
-          description: "قاعدة ذاتية الاستضافة يمكنك تكييفها مع قائمة الوظائف الخاصة بك.",
+        telegram: {
+          title: "مجاني 100% على تيليجرام",
+          description: "قناة سريعة للهاتف تفتحها فور بدء البحث.",
         },
       },
     },
     feed: {
       title: "آخر ملخص منشور",
-      subtitle: "آخر الوظائف من الجدول المهيأ، مع معاينة محلية عند غياب الواجهة الخلفية.",
+      subtitle: "آخر الوظائف المنشورة على تيليجرام، مع معاينة محلية عند غياب الواجهة الخلفية.",
       loading: "جار تحميل آخر ملخص...",
       empty: "لا يوجد ملخص منشور حاليا.",
       fallback: "معاينة الملخص",
@@ -391,7 +391,7 @@ const STRINGS = {
       statusPrefix: "ملخص منشور",
       sourceLabel: "المصدر",
       apply: "قدّم الآن",
-      more: "جرّب مطابقة السيرة",
+      more: "شاهد المزيد من الوظائف على تيليجرام",
       untitled: "وظيفة بدون عنوان",
       unknownCompany: "شركة غير محددة",
       unknownLocation: "مكان غير محدد",
@@ -414,7 +414,7 @@ const STRINGS = {
       },
     },
     phonePreview: {
-      eyebrow: "قائمة وظائف مباشرة",
+      eyebrow: "ملخص تيليجرام مباشر",
       fallbackEyebrow: "معاينة الملخص",
       badgeLive: "مباشر",
       badgePreview: "معاينة",
@@ -441,27 +441,27 @@ const STRINGS = {
           description: "نقلل التكرار والإشارات الضعيفة قبل النشر.",
         },
         deliver: {
-          title: "نشر عبر الويب",
+          title: "نشر عبر تيليجرام",
           description: "تصلك الوظائف الجاهزة للمراجعة بصيغة سهلة على الهاتف.",
         },
         feed: {
           title: "بث مباشر على الموقع",
-          description: "يغذي نفس الجدول قائمة الموقع ومحرك مطابقة السيرة.",
+          description: "نفس الملخّص يغذّي قائمة الموقع في الوقت الفعلي — دون الحاجة إلى تيليجرام.",
         },
       },
     },
     faq: {
       eyebrow: "معلومات مفيدة",
       title: "أسئلة شائعة",
-      subtitle: "أهم ما تحتاج معرفته قبل نشر نسختك الخاصة.",
+      subtitle: "أهم ما تحتاج معرفته قبل الانضمام.",
       items: {
         free: {
           question: "هل الخدمة مجانية فعلا؟",
-          answer: "نعم، الكود متاح برخصة MIT ويمكن استضافته ذاتيا.",
+          answer: "نعم، الانضمام إلى قناة JobStream DZ مجاني بالكامل.",
         },
         frequency: {
           question: "كم مرة تتحدث العروض؟",
-          answer: "يمكن ضبط وقت تشغيل أداة الجمع حسب المصادر وحدود الاستخدام.",
+          answer: "يتم تحديث القناة كل 3 دقائق عند توفر فرص جديدة.",
         },
         quality: {
           question: "كيف تمنعون التكرار؟",
@@ -470,10 +470,10 @@ const STRINGS = {
       },
     },
     banner: {
-      title: "اعثر على الوظائف المناسبة لملفك.",
-      subtitle: "حمّل سيرتك وقارنها بالوظائف الحديثة في نسختك.",
-      join: "جرّب مطابقة السيرة",
-      footnote: "مفتوح المصدر وذاتي الاستضافة ومصمم للباحثين عن عمل",
+      title: "استقبل الفرص القادمة قبل غيرك.",
+      subtitle: "انضم إلى JobStream DZ ووفّر وقتك في البحث اليومي.",
+      join: "انضم إلى JobStream DZ",
+      footnote: "مجاني، سريع، ومصمم للباحثين عن عمل في الجزائر",
     },
     a11y: {
       nav: "التنقل الرئيسي",
@@ -584,7 +584,7 @@ function getFallbackFeed(lang) {
         source: "Emploitic",
         published_date: "Aujourd'hui",
         published_time_utc: "09:40 UTC",
-        apply_url: "",
+        apply_url: "https://t.me/jobstream_dz",
       },
       {
         title: "Comptable confirmé",
@@ -593,7 +593,7 @@ function getFallbackFeed(lang) {
         source: "JobDz",
         published_date: "Aujourd'hui",
         published_time_utc: "09:34 UTC",
-        apply_url: "",
+        apply_url: "https://t.me/jobstream_dz",
       },
       {
         title: "Assistant marketing",
@@ -602,7 +602,7 @@ function getFallbackFeed(lang) {
         source: "LinkedIn",
         published_date: "Aujourd'hui",
         published_time_utc: "09:29 UTC",
-        apply_url: "",
+        apply_url: "https://t.me/jobstream_dz",
       },
     ],
     en: [
@@ -613,7 +613,7 @@ function getFallbackFeed(lang) {
         source: "Emploitic",
         published_date: "Today",
         published_time_utc: "09:40 UTC",
-        apply_url: "",
+        apply_url: "https://t.me/jobstream_dz",
       },
       {
         title: "Senior Accountant",
@@ -622,7 +622,7 @@ function getFallbackFeed(lang) {
         source: "JobDz",
         published_date: "Today",
         published_time_utc: "09:34 UTC",
-        apply_url: "",
+        apply_url: "https://t.me/jobstream_dz",
       },
       {
         title: "Marketing Assistant",
@@ -631,7 +631,7 @@ function getFallbackFeed(lang) {
         source: "LinkedIn",
         published_date: "Today",
         published_time_utc: "09:29 UTC",
-        apply_url: "",
+        apply_url: "https://t.me/jobstream_dz",
       },
     ],
     ar: [
@@ -642,7 +642,7 @@ function getFallbackFeed(lang) {
         source: "Emploitic",
         published_date: "اليوم",
         published_time_utc: "09:40 UTC",
-        apply_url: "",
+        apply_url: "https://t.me/jobstream_dz",
       },
       {
         title: "محاسب مؤكد",
@@ -651,7 +651,7 @@ function getFallbackFeed(lang) {
         source: "JobDz",
         published_date: "اليوم",
         published_time_utc: "09:34 UTC",
-        apply_url: "",
+        apply_url: "https://t.me/jobstream_dz",
       },
       {
         title: "مساعد تسويق",
@@ -660,7 +660,7 @@ function getFallbackFeed(lang) {
         source: "LinkedIn",
         published_date: "اليوم",
         published_time_utc: "09:29 UTC",
-        apply_url: "",
+        apply_url: "https://t.me/jobstream_dz",
       },
     ],
   };
@@ -702,7 +702,7 @@ function getFallbackFeed(lang) {
     source,
     published_date: lang === "ar" ? "اليوم" : lang === "en" ? "Today" : "Aujourd'hui",
     published_time_utc: "09:21 UTC",
-    apply_url: "",
+    apply_url: "https://t.me/jobstream_dz",
   }));
 
   return {
@@ -1394,7 +1394,7 @@ function renderPhonePreview(lang) {
 
   ctaNode.textContent = dict.phonePreview.cta;
   expandNode.textContent = dict.phonePreview.showMore;
-  expandNode.href = "#live-feed";
+  expandNode.href = "/jobs-today/";
   expandNode.hidden = true;
   expandNode.removeAttribute("aria-expanded");
 

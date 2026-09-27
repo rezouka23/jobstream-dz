@@ -6,7 +6,7 @@
     <title>JobStream DZ | Offres d'emploi fraîches en Algérie</title>
     <meta
       name="description"
-      content="Consultez les offres d'emploi récentes en Algérie dans un flux multi-source filtré et sans doublons."
+      content="Recevez gratuitement les offres d'emploi les plus récentes en Algérie sur Telegram : mises à jour toutes les 3 minutes, 4 sources, sans doublons."
     />
     <link rel="icon" type="image/png" href="assets/logo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -15,7 +15,7 @@
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=20260927-phase1" />
   </head>
   <body>
     <svg class="icon-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
@@ -89,6 +89,7 @@
         <div class="site-menu" id="site-menu">
           <nav class="main-nav" aria-label="Navigation principale" data-i18n-aria-label="a11y.nav">
             <a href="#" data-i18n="nav.home">Accueil</a>
+            <a href="/jobs-today/" data-i18n="nav.jobsToday">Offres du jour</a>
             <a href="/cv-match/" data-i18n="nav.cvMatch">Matching CV</a>
             <a href="#proof" data-i18n="nav.proof">Preuves</a>
             <a href="#live-feed" data-i18n="nav.feed">Digest</a>
@@ -104,7 +105,7 @@
         </div>
 
         <div class="topbar-actions">
-          <a href="/cv-match/" class="join-btn">
+          <a href="https://t.me/jobstream_dz" target="_blank" rel="noreferrer" class="join-btn">
             <svg class="icon plane" aria-hidden="true"><use href="#icon-paper-plane"></use></svg>
             <span data-i18n="nav.join">Recevoir les offres</span>
           </a>
@@ -128,16 +129,16 @@
           <img class="hero-monument" src="assets/monument.png" alt="Monument des Martyrs" data-i18n-alt="hero.monumentAlt" />
 
           <div class="hero-copy">
-            <p class="hero-kicker" data-i18n="hero.kicker">Nouvelles offres dans un flux ouvert</p>
+            <p class="hero-kicker" data-i18n="hero.kicker">Nouvelles offres en direct sur Telegram</p>
             <h1 id="hero-title" data-i18n-html="hero.title">Offres fraîches en <span>Algérie.</span></h1>
-            <p class="hero-sub" data-i18n="hero.subtitle">JobStream DZ surveille les plateformes qui recrutent, élimine les doublons et rassemble les nouvelles opportunités dans une interface ouverte.</p>
+            <p class="hero-sub" data-i18n="hero.subtitle">JobStream DZ surveille les plateformes qui recrutent, élimine les doublons et livre les nouvelles opportunités directement sur Telegram.</p>
 
             <div class="hero-actions">
-              <a href="#live-feed" class="btn-primary">
+              <a href="https://t.me/jobstream_dz" target="_blank" rel="noreferrer" class="btn-primary">
                 <svg class="icon plane" aria-hidden="true"><use href="#icon-paper-plane"></use></svg>
-                <span data-i18n="hero.join">Explorer les offres</span>
+                <span data-i18n="hero.join">Recevoir les offres maintenant</span>
               </a>
-              <a href="/cv-match/" class="btn-secondary" data-i18n="hero.how">Matching CV</a>
+              <a href="/jobs-today/" class="btn-secondary" data-i18n="hero.how">Offres du jour</a>
             </div>
 
             <a href="/cv-match/" class="hero-cv-teaser" aria-label="Importez votre CV pour trouver les offres qui vous correspondent" data-i18n-aria-label="hero.cvTeaser.ariaLabel">
@@ -179,9 +180,9 @@
                     <p class="phone-preview-status" data-phone-preview-status></p>
                     <div class="phone-preview-list" data-phone-preview-list></div>
 
-                    <a href="#live-feed" class="phone-preview-expand" data-phone-expand hidden></a>
+                    <a href="/jobs-today/" class="phone-preview-expand" data-phone-expand hidden></a>
 
-                    <a class="phone-preview-cta" href="#live-feed">
+                    <a class="phone-preview-cta" href="https://t.me/jobstream_dz" target="_blank" rel="noreferrer">
                       <span data-phone-preview-cta></span>
                       <svg class="icon" aria-hidden="true"><use href="#icon-chevron-right"></use></svg>
                     </a>
@@ -227,8 +228,8 @@
             <li class="proof-step">
               <span class="proof-step-index" aria-hidden="true">04</span>
               <div class="proof-step-body">
-                <h3 data-i18n="proof.items.openSource.title">100% open source</h3>
-                <p data-i18n="proof.items.openSource.description">Une base auto-hébergeable que vous pouvez adapter à votre propre flux d'emploi.</p>
+                <h3 data-i18n="proof.items.telegram.title">100% gratuit sur Telegram</h3>
+                <p data-i18n="proof.items.telegram.description">Un canal mobile, rapide et accessible dès que vous cherchez un poste.</p>
               </div>
             </li>
           </ol>
@@ -242,7 +243,7 @@
                   <svg class="icon"><use href="#icon-briefcase"></use></svg>
                 </span>
                 <h2 id="live-feed-title" data-i18n="feed.title">Dernier digest publié</h2>
-                <p data-i18n="feed.subtitle">Les dernières offres de la feuille configurée, avec un aperçu local si le backend n'est pas disponible.</p>
+                <p data-i18n="feed.subtitle">Les dernières offres envoyées sur Telegram, avec un aperçu local si le backend n'est pas disponible.</p>
               </div>
               <p class="live-feed-status" data-live-feed-status aria-live="polite" aria-atomic="true"></p>
             </div>
@@ -324,11 +325,11 @@
           <div class="live-feed-body">
             <div class="live-feed-grid" data-live-feed-list aria-busy="true"></div>
 
-            <a href="/cv-match/" class="live-feed-more">
+            <a href="https://t.me/jobstream_dz" target="_blank" rel="noreferrer" class="live-feed-more">
               <span class="live-feed-more-icon" aria-hidden="true">
                 <svg class="icon"><use href="#icon-paper-plane"></use></svg>
               </span>
-              <span data-i18n="feed.more">Tester le matching CV</span>
+              <span data-i18n="feed.more">Voir plus d'offres sur Telegram</span>
               <span class="live-feed-more-arrow" aria-hidden="true">
                 <svg class="icon"><use href="#icon-chevron-right"></use></svg>
               </span>
@@ -363,7 +364,7 @@
             <li class="story-step">
               <span class="story-step-index" aria-hidden="true">03</span>
               <div class="story-step-body">
-                <h3 data-i18n="story.steps.deliver.title">Publication web</h3>
+                <h3 data-i18n="story.steps.deliver.title">Publication Telegram</h3>
                 <p data-i18n="story.steps.deliver.description">Les offres prêtes à consulter arrivent dans un format mobile et partageable.</p>
               </div>
             </li>
@@ -372,7 +373,7 @@
               <span class="story-step-index" aria-hidden="true">04</span>
               <div class="story-step-body">
                 <h3 data-i18n="story.steps.feed.title">Flux en direct sur le site</h3>
-                <p data-i18n="story.steps.feed.description">La même feuille alimente le flux du site et le moteur de matching CV.</p>
+                <p data-i18n="story.steps.feed.description">Le même digest alimente le flux du site en temps réel — consultable sans Telegram.</p>
               </div>
             </li>
           </ol>
@@ -382,7 +383,7 @@
           <div class="faq-head">
             <p class="faq-eyebrow" data-i18n="faq.eyebrow">Bon à savoir</p>
             <h2 id="faq-title" data-i18n="faq.title">Questions fréquentes</h2>
-            <p class="faq-reveal" data-i18n="faq.subtitle">L'essentiel avant de déployer votre propre instance.</p>
+            <p class="faq-reveal" data-i18n="faq.subtitle">L'essentiel avant de rejoindre le canal.</p>
           </div>
 
           <ol class="faq-pipeline">
@@ -390,7 +391,7 @@
               <span class="faq-step-index" aria-hidden="true">01</span>
               <div class="faq-step-body">
                 <h3 data-i18n="faq.items.free.question">Est-ce vraiment gratuit ?</h3>
-                <p data-i18n="faq.items.free.answer">Oui. Le code est publié sous licence MIT et peut être auto-hébergé.</p>
+                <p data-i18n="faq.items.free.answer">Oui. L'accès au canal JobStream DZ est totalement gratuit.</p>
               </div>
             </li>
 
@@ -406,7 +407,7 @@
               <span class="faq-step-index" aria-hidden="true">03</span>
               <div class="faq-step-body">
                 <h3 data-i18n="faq.items.quality.question">Comment évitez-vous les doublons ?</h3>
-                <p data-i18n="faq.items.quality.answer">Chaque annonce reçoit une empreinte stable pour limiter les répétitions dans la feuille.</p>
+                <p data-i18n="faq.items.quality.answer">Chaque annonce passe par un filtrage dédié pour limiter les répétitions dans le canal.</p>
               </div>
             </li>
           </ol>
@@ -417,13 +418,13 @@
           <img src="assets/skyline_right.png" alt="" aria-hidden="true" class="skyline skyline-right" />
 
           <div class="banner-content">
-            <h2 data-i18n="banner.title">Trouvez les offres adaptées à votre profil.</h2>
-            <p data-i18n="banner.subtitle">Importez votre CV et comparez-le aux offres récentes de votre instance.</p>
-            <a href="/cv-match/" class="join-btn banner-btn">
+            <h2 data-i18n="banner.title">Recevez les prochaines offres avant les autres.</h2>
+            <p data-i18n="banner.subtitle">Rejoignez JobStream DZ et gagnez du temps à chaque recherche.</p>
+            <a href="https://t.me/jobstream_dz" target="_blank" rel="noreferrer" class="join-btn banner-btn">
               <svg class="icon plane" aria-hidden="true"><use href="#icon-paper-plane"></use></svg>
-              <span data-i18n="banner.join">Tester le matching CV</span>
+              <span data-i18n="banner.join">Rejoindre JobStream DZ</span>
             </a>
-            <small data-i18n="banner.footnote">Open source, auto-hébergeable et pensé pour les chercheurs d'emploi</small>
+            <small data-i18n="banner.footnote">Gratuit, rapide, et pensé pour les chercheurs d'emploi en Algérie</small>
           </div>
         </section>
       </main>
@@ -431,6 +432,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-    <script src="script.js?v=20260602-cv-match-nav"></script>
+    <script src="script.js?v=20260927-phase1"></script>
   </body>
 </html>
