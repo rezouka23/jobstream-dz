@@ -16,13 +16,27 @@ const STRINGS = {
       join: "Recevoir les offres",
     },
     hero: {
-      kicker: "Nouvelles offres dans un flux ouvert",
+      kicker: "Votre prochaine étape commence ici",
       title:
-        "Offres fraîches en <span>Algérie.</span>",
+        "Trouvez votre prochain emploi en <span>Algérie.</span>",
       subtitle:
-        "JobStream DZ surveille les plateformes qui recrutent, élimine les doublons et rassemble les nouvelles opportunités dans une interface ouverte.",
+        "Explorez les offres récentes, près de chez vous. Du premier stage à votre prochaine opportunité.",
       join: "Explorer les offres",
       how: "Matching CV",
+      search: {
+        label: "Rechercher des offres d’emploi",
+        queryLabel: "Poste ou entreprise",
+        placeholder: "Ex. comptable, développeur…",
+        wilayaLabel: "Wilaya",
+        allWilayas: "Toutes les wilayas",
+        submit: "Rechercher",
+        shortcutsLabel: "Trouver des offres selon votre profil",
+        noExperience: "Sans expérience",
+        internship: "Stages",
+        junior: "Début de carrière",
+        remote: "Télétravail",
+        scope: "Recherche dans les offres chargées. Les raccourcis utilisent les critères explicitement renseignés.",
+      },
       monumentAlt: "Monument des Martyrs",
       mapAlt: "Carte des offres en Algérie",
       flagAlt: "Drapeau algérien",
@@ -177,13 +191,27 @@ const STRINGS = {
       join: "Get job alerts",
     },
     hero: {
-      kicker: "Fresh opportunities in an open feed",
+      kicker: "Your next step starts here",
       title:
-        "Fresh jobs across <span>Algeria.</span>",
+        "Find your next job in <span>Algeria.</span>",
       subtitle:
-        "JobStream DZ watches active hiring platforms, removes duplicate listings, and gathers new opportunities in an open interface.",
+        "Explore recent jobs near you. From your first internship to your next opportunity.",
       join: "Explore jobs",
       how: "CV match",
+      search: {
+        label: "Search job offers",
+        queryLabel: "Job title or company",
+        placeholder: "E.g. accountant, developer…",
+        wilayaLabel: "Wilaya",
+        allWilayas: "All wilayas",
+        submit: "Search",
+        shortcutsLabel: "Find jobs for your career stage",
+        noExperience: "No experience",
+        internship: "Internships",
+        junior: "Early career",
+        remote: "Remote work",
+        scope: "Searches loaded offers. Shortcuts use explicitly stated job criteria.",
+      },
       monumentAlt: "Martyrs Memorial",
       mapAlt: "Map of opportunities in Algeria",
       flagAlt: "Algerian flag",
@@ -338,13 +366,27 @@ const STRINGS = {
       join: "استقبل الوظائف",
     },
     hero: {
-      kicker: "فرص جديدة في قائمة مفتوحة",
+      kicker: "خطوتك القادمة تبدأ هنا",
       title:
-        "أحدث فرص العمل في <span>الجزائر.</span>",
+        "اعثر على وظيفتك القادمة في <span>الجزائر.</span>",
       subtitle:
-        "يراقب JobStream DZ المنصات النشطة، يزيل التكرار، ويجمع الفرص الجديدة في واجهة مفتوحة.",
+        "تصفح الوظائف الحديثة بالقرب منك، من أول تربص إلى فرصتك القادمة.",
       join: "تصفح الوظائف",
       how: "مطابقة السيرة",
+      search: {
+        label: "البحث عن عروض العمل",
+        queryLabel: "الوظيفة أو الشركة",
+        placeholder: "مثال: محاسب، مطور…",
+        wilayaLabel: "الولاية",
+        allWilayas: "كل الولايات",
+        submit: "بحث",
+        shortcutsLabel: "ابحث حسب مسارك المهني",
+        noExperience: "بدون خبرة",
+        internship: "تربصات",
+        junior: "بداية المسار المهني",
+        remote: "العمل عن بعد",
+        scope: "البحث ضمن العروض المحملة. تعتمد الاختصارات على المعايير المذكورة صراحة في العرض.",
+      },
       monumentAlt: "مقام الشهيد",
       mapAlt: "خريطة فرص العمل في الجزائر",
       flagAlt: "العلم الجزائري",
@@ -500,6 +542,8 @@ const feedFilterState = {
   sources: new Set(),
   locations: new Set(),
   recency: "",
+  wilaya: "",
+  category: "",
 };
 const feedChipSignatures = { source: "", location: "", recency: "" };
 const RECENCY_BUCKETS = [
@@ -507,6 +551,70 @@ const RECENCY_BUCKETS = [
   { key: "day", minutes: 1440 },
   { key: "week", minutes: 10080 },
 ];
+
+const WILAYAS = `01|Adrar|أدرار
+02|Chlef|الشلف
+03|Laghouat|الأغواط
+04|Oum El Bouaghi|أم البواقي
+05|Batna|باتنة
+06|Béjaïa|بجاية|Bejaia
+07|Biskra|بسكرة
+08|Béchar|بشار
+09|Blida|البليدة
+10|Bouira|البويرة
+11|Tamanrasset|تمنراست
+12|Tébessa|تبسة
+13|Tlemcen|تلمسان
+14|Tiaret|تيارت
+15|Tizi Ouzou|تيزي وزو
+16|Alger|الجزائر العاصمة|Algiers
+17|Djelfa|الجلفة
+18|Jijel|جيجل
+19|Sétif|سطيف
+20|Saïda|سعيدة
+21|Skikda|سكيكدة
+22|Sidi Bel Abbès|سيدي بلعباس
+23|Annaba|عنابة
+24|Guelma|قالمة
+25|Constantine|قسنطينة
+26|Médéa|المدية
+27|Mostaganem|مستغانم
+28|M’Sila|المسيلة|M'Sila|Msila
+29|Mascara|معسكر
+30|Ouargla|ورقلة
+31|Oran|وهران
+32|El Bayadh|البيض
+33|Illizi|إليزي
+34|Bordj Bou Arréridj|برج بوعريريج
+35|Boumerdès|بومرداس
+36|El Tarf|الطارف
+37|Tindouf|تندوف
+38|Tissemsilt|تيسمسيلت
+39|El Oued|الوادي
+40|Khenchela|خنشلة
+41|Souk Ahras|سوق أهراس
+42|Tipaza|تيبازة|Tipasa
+43|Mila|ميلة
+44|Aïn Defla|عين الدفلى
+45|Naâma|النعامة
+46|Aïn Témouchent|عين تموشنت
+47|Ghardaïa|غرداية
+48|Relizane|غليزان
+49|Timimoun|تيميمون
+50|Bordj Badji Mokhtar|برج باجي مختار
+51|Ouled Djellal|أولاد جلال
+52|Béni Abbès|بني عباس
+53|In Salah|عين صالح
+54|In Guezzam|عين قزام
+55|Touggourt|تقرت
+56|Djanet|جانت
+57|El M’Ghair|المغير|El M'Ghair|El Meghaier
+58|El Meniaa|المنيعة|El Menia|El Ménéa`
+  .split("\n")
+  .map((line) => {
+    const [id, name, arabic, ...aliases] = line.split("|");
+    return { id, name, arabic, aliases: [name, arabic, ...aliases] };
+  });
 const RECENCY_LABEL_KEYS = { hour: "recencyHour", day: "recencyDay", week: "recencyWeek" };
 let feedSearchDebounce = 0;
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -807,6 +915,8 @@ function normalizeSearchText(value) {
   return String(value || "")
     .normalize("NFD")
     .replace(/[\u0300-\u036f\u064b-\u065f\u0670]/g, "")
+    .replace(/[أإآ]/g, "ا")
+    .replace(/[’']/g, " ")
     .toLowerCase()
     .trim();
 }
@@ -864,8 +974,100 @@ function getRelevantRecencyBuckets(jobs, digestPublishedAt) {
   }).map(({ key }) => key);
 }
 
+function containsLocationAlias(location, alias) {
+  const escaped = normalizeSearchText(alias).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return new RegExp(`(^|[^\\p{L}\\p{N}])${escaped}($|[^\\p{L}\\p{N}])`, "u")
+    .test(normalizeSearchText(location));
+}
+
+function jobMatchesWilaya(job, id) {
+  const wilaya = WILAYAS.find((entry) => entry.id === id);
+  return Boolean(wilaya && wilaya.aliases.some((alias) => containsLocationAlias(job.location, alias)));
+}
+
+function jobMatchesCategory(job, category) {
+  const title = normalizeSearchText(job.title);
+  const experience = isPlaceholderValue(job.experience_years) ? "" : normalizeSearchText(job.experience_years);
+  const level = isPlaceholderValue(job.job_level) ? "" : normalizeSearchText(job.job_level);
+  const contract = isPlaceholderValue(job.contract_type) ? "" : normalizeSearchText(job.contract_type);
+  const mode = isPlaceholderValue(job.work_mode) ? "" : normalizeSearchText(job.work_mode);
+  if (category === "no-experience") {
+    return /^(0|0\s*(ans?|years?))$/.test(experience) ||
+      /sans experience|aucune experience|no experience(?: required| needed)?|بدون خبرة|دون خبرة/.test(`${experience} ${level} ${title}`);
+  }
+  if (category === "internship") {
+    return /\b(stage|stages|stagiaire|intern|internship|internships)\b|تربص|متربص|تدريب/.test(`${contract} ${level} ${title}`);
+  }
+  if (category === "junior") {
+    return /\b(junior|entry[ -]level|graduate|debutant|debut de carriere)\b|مبتدئ|حديث التخرج|بداية المسار/.test(`${level} ${title}`);
+  }
+  if (category === "remote") {
+    const text = `${mode} ${title}`;
+    if (/not remote|no remote|on[ -]site only|presentiel uniquement|hybrid|hybride|هجين|ليس عن بعد/.test(text)) {
+      return false;
+    }
+    return /\bremote\b|teletravail|work from home|عن بعد/.test(text);
+  }
+  return false;
+}
+
+function syncHeroSearch(lang, resetSelection = false) {
+  const select = document.querySelector("[data-hero-wilaya]");
+  if (select) {
+    const selected = resetSelection ? feedFilterState.wilaya : select.value;
+    select.innerHTML = `<option value="">${escapeHtml(STRINGS[lang].hero.search.allWilayas)}</option>` +
+      WILAYAS.map((wilaya) => `<option value="${wilaya.id}">${wilaya.id} · ${escapeHtml(lang === "ar" ? wilaya.arabic : wilaya.name)}</option>`).join("");
+    select.value = selected;
+  }
+  document.querySelectorAll("[data-job-category]").forEach((button) => {
+    button.setAttribute("aria-pressed", String(button.dataset.jobCategory === feedFilterState.category));
+  });
+}
+
+function setupHeroSearch() {
+  const form = document.querySelector("[data-hero-search]");
+  if (!form) {
+    return;
+  }
+  const submitSearch = () => {
+    if (feedSearchDebounce) {
+      window.clearTimeout(feedSearchDebounce);
+      feedSearchDebounce = 0;
+    }
+    const query = document.querySelector("[data-hero-query]").value;
+    feedFilterState.query = normalizeSearchText(query);
+    feedFilterState.wilaya = document.querySelector("[data-hero-wilaya]").value;
+    const feedQuery = document.querySelector("[data-feed-search]");
+    if (feedQuery) {
+      feedQuery.value = query;
+    }
+    renderLiveFeed(getCurrentLanguage());
+    syncHeroSearch(getCurrentLanguage());
+    const results = document.getElementById("live-feed-title");
+    results.setAttribute("tabindex", "-1");
+    results.focus({ preventScroll: true });
+    document.getElementById("live-feed").scrollIntoView({ behavior: prefersReducedMotion.matches ? "instant" : "smooth", block: "start" });
+  };
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    submitSearch();
+  });
+  document.querySelectorAll("[data-job-category]").forEach((button) => {
+    button.addEventListener("click", () => {
+      feedFilterState.category = feedFilterState.category === button.dataset.jobCategory ? "" : button.dataset.jobCategory;
+      submitSearch();
+    });
+  });
+}
+
 function jobMatchesFilters(job, context) {
-  const { query, sources, locations, recency } = feedFilterState;
+  const { query, sources, locations, recency, wilaya, category } = feedFilterState;
+  if (wilaya && !jobMatchesWilaya(job, wilaya)) {
+    return false;
+  }
+  if (category && !jobMatchesCategory(job, category)) {
+    return false;
+  }
   if (sources.size && !sources.has(String(job.source || "unknown"))) {
     return false;
   }
@@ -881,7 +1083,7 @@ function jobMatchesFilters(job, context) {
   }
   if (query) {
     const haystack = normalizeSearchText(
-      [job.title, job.company_name, job.location, job.source].filter(Boolean).join(" ")
+      [job.title, job.company_name].filter(Boolean).join(" ")
     );
     if (!haystack.includes(query)) {
       return false;
@@ -1619,14 +1821,20 @@ function renderLiveFeed(lang) {
     feedFilterState.query !== "" ||
     feedFilterState.sources.size > 0 ||
     feedFilterState.locations.size > 0 ||
-    feedFilterState.recency !== "";
+    feedFilterState.recency !== "" ||
+    feedFilterState.wilaya !== "" ||
+    feedFilterState.category !== "";
   if (clearNode) {
     clearNode.hidden = !hasActiveFilter;
   }
 
   const filteredJobs = jobs.filter((job) => jobMatchesFilters(job, { digestPublishedAt }));
   if (countNode) {
-    countNode.textContent = `${dict.feed.filters.resultsLabel} : ${filteredJobs.length}`;
+    const wilaya = WILAYAS.find((entry) => entry.id === feedFilterState.wilaya);
+    const categoryButton = document.querySelector(`[data-job-category="${feedFilterState.category}"]`);
+    const selection = [wilaya ? (safeLang === "ar" ? wilaya.arabic : wilaya.name) : "", categoryButton?.textContent]
+      .filter(Boolean).join(" · ");
+    countNode.textContent = `${dict.feed.filters.resultsLabel} : ${filteredJobs.length}${selection ? ` · ${selection}` : ""}`;
   }
 
   if (!filteredJobs.length) {
@@ -1777,6 +1985,7 @@ function applyLanguage(lang) {
   window.localStorage.setItem(STORAGE_KEY, safeLang);
   renderLiveFeed(safeLang);
   renderPhonePreview(safeLang);
+  syncHeroSearch(safeLang);
   refreshMotion();
 }
 
@@ -1864,6 +2073,10 @@ function setupFeedFilters() {
       feedSearchDebounce = window.setTimeout(() => {
         feedSearchDebounce = 0;
         feedFilterState.query = normalizeSearchText(value);
+        const heroQuery = document.querySelector("[data-hero-query]");
+        if (heroQuery) {
+          heroQuery.value = value;
+        }
         renderLiveFeed(getCurrentLanguage());
       }, 150);
     });
@@ -1923,10 +2136,21 @@ function setupFeedFilters() {
       feedFilterState.locations.clear();
       feedFilterState.recency = "";
       feedFilterState.query = "";
+      feedFilterState.wilaya = "";
+      feedFilterState.category = "";
+      if (feedSearchDebounce) {
+        window.clearTimeout(feedSearchDebounce);
+        feedSearchDebounce = 0;
+      }
+      const heroQuery = document.querySelector("[data-hero-query]");
+      if (heroQuery) {
+        heroQuery.value = "";
+      }
       if (searchNode) {
         searchNode.value = "";
       }
       renderLiveFeed(getCurrentLanguage());
+      syncHeroSearch(getCurrentLanguage(), true);
     });
   }
 }
@@ -1935,6 +2159,7 @@ function init() {
   setupLanguageSwitcher();
   setupMobileMenu();
   setupFeedFilters();
+  setupHeroSearch();
   setupPhoneModal();
   const savedLang = window.localStorage.getItem(STORAGE_KEY) || DEFAULT_LANG;
   applyLanguage(savedLang);

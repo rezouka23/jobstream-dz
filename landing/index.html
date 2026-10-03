@@ -132,15 +132,26 @@
             <h1 id="hero-title" data-i18n-html="hero.title"></h1>
             <p class="hero-sub" data-i18n="hero.subtitle"></p>
 
-            <div class="hero-actions">
-              <a href="#live-feed" class="btn-primary">
-                <svg class="icon plane" aria-hidden="true"><use href="#icon-paper-plane"></use></svg>
-                <span data-i18n="hero.join"></span>
-              </a>
-              <a href="/cv-match/" class="btn-secondary" data-i18n="hero.how"></a>
+            <form class="hero-search" data-hero-search role="search" data-i18n-aria-label="hero.search.label">
+              <label class="hero-search-field" for="hero-query">
+                <span data-i18n="hero.search.queryLabel"></span>
+                <input id="hero-query" type="search" name="query" data-hero-query autocomplete="off" data-i18n-placeholder="hero.search.placeholder" />
+              </label>
+              <label class="hero-search-field" for="hero-wilaya">
+                <span data-i18n="hero.search.wilayaLabel"></span>
+                <select id="hero-wilaya" name="wilaya" data-hero-wilaya></select>
+              </label>
+              <button type="submit" class="btn-primary" data-i18n="hero.search.submit"></button>
+            </form>
+            <div class="hero-shortcuts" role="group" data-i18n-aria-label="hero.search.shortcutsLabel">
+              <button type="button" data-job-category="no-experience" aria-pressed="false" data-i18n="hero.search.noExperience"></button>
+              <button type="button" data-job-category="internship" aria-pressed="false" data-i18n="hero.search.internship"></button>
+              <button type="button" data-job-category="junior" aria-pressed="false" data-i18n="hero.search.junior"></button>
+              <button type="button" data-job-category="remote" aria-pressed="false" data-i18n="hero.search.remote"></button>
             </div>
+            <p class="hero-search-note" data-i18n="hero.search.scope"></p>
 
-            <a href="/cv-match/" class="hero-cv-teaser" data-i18n-aria-label="hero.cvTeaser.ariaLabel">
+            <a href="/cv-match/" class="hero-cv-teaser" hidden data-i18n-aria-label="hero.cvTeaser.ariaLabel">
               <span class="hero-cv-teaser-icon" aria-hidden="true">
                 <svg class="icon"><use href="#icon-doc-upload"></use></svg>
               </span>
@@ -155,7 +166,7 @@
             </a>
           </div>
 
-          <div class="hero-visuals">
+          <div class="hero-visuals" hidden>
             <img class="map-art" src="assets/map.png" alt="Carte des offres en Algérie" data-i18n-alt="hero.mapAlt" />
             <img class="flag-art" src="assets/flag.png" alt="Drapeau algérien" data-i18n-alt="hero.flagAlt" />
             <div class="phone-modal-backdrop" data-phone-modal-backdrop hidden></div>
@@ -313,7 +324,7 @@
                   ></div>
                 </div>
               </div>
-              <p class="sr-only" data-feed-count role="status" aria-live="polite"></p>
+              <p class="live-feed-count" data-feed-count role="status" aria-live="polite"></p>
             </div>
           </div>
 

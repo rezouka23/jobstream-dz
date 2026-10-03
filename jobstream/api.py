@@ -143,6 +143,10 @@ def _public_job(
         "added_at": _to_text(row.get("added_at") or row.get("scraped_at")),
         "arrival_date": arrival_date.isoformat(),
         "date_basis": date_basis,
+        "contract_type": _to_text(row.get("contract_type")),
+        "experience_years": _to_text(row.get("experience_years")),
+        "job_level": _to_text(row.get("job_level")),
+        "work_mode": _to_text(row.get("work_mode")),
     }
     if matchable:
         job.update(

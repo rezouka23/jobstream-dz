@@ -43,6 +43,10 @@ def test_latest_feed_reads_recent_sheet_rows_directly(
             "location": "Algiers",
             "apply_url": "https://example.com/jobs/1?utm_source=test",
             "added_at": f"{_today()}T08:00:00+01:00",
+            "contract_type": "Stage",
+            "experience_years": "0",
+            "job_level": "Junior",
+            "work_mode": "Remote",
         },
         {
             "title": "Duplicate",
@@ -66,6 +70,12 @@ def test_latest_feed_reads_recent_sheet_rows_directly(
     assert payload["job_count"] == 1
     assert payload["jobs"][0]["title"] == "Backend Engineer"
     assert payload["jobs"][0]["apply_url"] == "https://example.com/jobs/1"
+    assert {field: payload["jobs"][0][field] for field in (
+        "contract_type", "experience_years", "job_level", "work_mode"
+    )} == {
+        "contract_type": "Stage", "experience_years": "0",
+        "job_level": "Junior", "work_mode": "Remote",
+    }
     assert payload["meta"]["skipped_duplicates"] == 1
     assert payload["meta"]["skipped_without_links"] == 1
     assert payload["meta"]["skipped_outside_window"] == 1
