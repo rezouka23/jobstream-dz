@@ -3,17 +3,15 @@ const STRINGS = {
     meta: {
       title: "JobStream DZ | Offres d'emploi fraîches en Algérie",
       description:
-        "Consultez les offres d'emploi récentes en Algérie dans un flux multi-source filtré et sans doublons.",
+        "Recevez gratuitement les offres d'emploi les plus récentes en Algérie sur Telegram : mises à jour toutes les 3 minutes, 4 sources, sans doublons.",
     },
     nav: {
-      home: "Accueil",
       jobsToday: "Offres du jour",
       cvMatch: "Matching CV",
-      proof: "Preuves",
-      feed: "Digest",
+      feed: "Dernières offres",
       story: "Méthode",
       faq: "FAQ",
-      join: "Recevoir les offres",
+      join: "Rejoindre sur Telegram",
     },
     hero: {
       kicker: "Votre prochaine étape commence ici",
@@ -21,8 +19,7 @@ const STRINGS = {
         "Trouvez votre prochain emploi en <span>Algérie.</span>",
       subtitle:
         "Explorez les offres récentes, près de chez vous. Du premier stage à votre prochaine opportunité.",
-      join: "Explorer les offres",
-      how: "Matching CV",
+      join: "Rejoindre le canal Telegram",
       search: {
         label: "Rechercher des offres d’emploi",
         queryLabel: "Poste ou entreprise",
@@ -34,13 +31,12 @@ const STRINGS = {
         noExperience: "Sans expérience",
         internship: "Stages",
         junior: "Début de carrière",
-        remote: "Télétravail",
-        scope: "Recherche dans les offres chargées. Les raccourcis utilisent les critères explicitement renseignés.",
+        scope: "Recherche dans les offres collectées au cours des dernières 24 heures.",
       },
       monumentAlt: "Monument des Martyrs",
       mapAlt: "Carte des offres en Algérie",
       flagAlt: "Drapeau algérien",
-      phoneAlt: "Aperçu du flux JobStream DZ",
+      phoneAlt: "Aperçu du canal Telegram JobStream DZ",
       phoneLinkLabel: "Voir le digest des offres",
       cvTeaser: {
         title: "Importez votre CV",
@@ -66,28 +62,30 @@ const STRINGS = {
           title: "4 sources vérifiées",
           description: "Les plateformes actives sont regroupées dans une seule lecture.",
         },
-        openSource: {
-          title: "100% open source",
-          description: "Une base auto-hébergeable que vous pouvez adapter à votre propre flux d'emploi.",
+        telegram: {
+          title: "100% gratuit sur Telegram",
+          description: "Un canal mobile, rapide et accessible dès que vous cherchez un poste.",
         },
       },
     },
     feed: {
-      title: "Dernier digest publié",
-      subtitle: "Les dernières offres de la feuille configurée, avec un aperçu local si le backend n'est pas disponible.",
-      loading: "Chargement du dernier digest...",
-      empty: "Aucun digest n'est disponible pour le moment.",
+      title: "Offres des dernières 24 h",
+      subtitle: "Recherchez parmi les offres collectées au cours des dernières 24 heures, de toutes les sources.",
+      loading: "Chargement des offres des dernières 24 heures...",
+      empty: "Aucune offre collectée au cours des dernières 24 heures.",
+      error: "Impossible de charger les offres. Réessayez.",
+      retry: "Réessayer",
+      loadMore: "Afficher plus d’offres",
       fallback: "Aperçu du digest",
-      fallbackNote: "Aperçu local affiché pendant que le flux live se reconnecte.",
+      fallbackNote: "Exemples d'offres récentes affichés pendant la reconnexion.",
       updatedPrefix: "Publié",
-      statusPrefix: "Digest publié",
+      statusPrefix: "Mis à jour",
       sourceLabel: "Source",
       apply: "Postuler",
-      more: "Tester le matching CV",
+      more: "Voir plus d'offres sur Telegram",
       untitled: "Offre sans titre",
       unknownCompany: "Entreprise non précisée",
       unknownLocation: "Lieu non précisé",
-      unavailableLink: "Lien indisponible",
       filters: {
         searchLabel: "Filtrer les offres",
         searchPlaceholder: "Rechercher un poste, une entreprise…",
@@ -106,7 +104,7 @@ const STRINGS = {
       },
     },
     phonePreview: {
-      eyebrow: "Flux d'offres en direct",
+      eyebrow: "Digest Telegram en direct",
       fallbackEyebrow: "Aperçu du digest",
       badgeLive: "Live",
       badgePreview: "Aperçu",
@@ -133,42 +131,47 @@ const STRINGS = {
           description: "Les doublons, répétitions et signaux faibles sont réduits avant publication.",
         },
         deliver: {
-          title: "Publication web",
+          title: "Publication Telegram",
           description: "Les offres prêtes à consulter arrivent dans un format mobile et partageable.",
         },
         feed: {
           title: "Flux en direct sur le site",
-          description: "La même feuille alimente le flux du site et le moteur de matching CV.",
+          description: "Le même digest alimente le flux du site en temps réel — consultable sans Telegram.",
         },
       },
     },
     faq: {
       eyebrow: "Bon à savoir",
       title: "Questions fréquentes",
-      subtitle: "L'essentiel avant de déployer votre propre instance.",
+      subtitle: "L'essentiel avant de rejoindre le canal.",
       items: {
         free: {
           question: "Est-ce vraiment gratuit ?",
-          answer: "Oui. Le code est publié sous licence MIT et peut être auto-hébergé.",
+          answer: "Oui. L'accès au canal JobStream DZ est totalement gratuit.",
         },
         frequency: {
           question: "À quelle fréquence les offres arrivent ?",
-          answer: "Le flux est mis à jour toutes les 3 minutes lorsqu'il y a de nouvelles opportunités.",
+          answer: "Dès qu'une nouvelle offre apparaît sur une source, elle est publiée au cycle suivant, sur le canal comme sur le site.",
         },
         quality: {
           question: "Comment évitez-vous les doublons ?",
-          answer: "Chaque annonce reçoit une empreinte stable pour limiter les répétitions dans la feuille.",
+          answer: "Chaque annonce passe par un filtrage dédié pour limiter les répétitions dans le canal.",
         },
       },
     },
     banner: {
-      title: "Trouvez les offres adaptées à votre profil.",
-      subtitle: "Importez votre CV et comparez-le aux offres récentes de votre instance.",
-      join: "Tester le matching CV",
-      footnote: "Open source, auto-hébergeable et pensé pour les chercheurs d'emploi",
+      title: "Recevez les prochaines offres avant les autres.",
+      subtitle: "Rejoignez JobStream DZ et gagnez du temps à chaque recherche.",
+      join: "Rejoindre le canal Telegram",
+      footnote: "Gratuit, rapide, et pensé pour les chercheurs d'emploi en Algérie",
+    },
+    footer: {
+      telegram: "Canal Telegram",
+      copyright: "© 2026 JobStream DZ",
     },
     a11y: {
       nav: "Navigation principale",
+      footerNav: "Liens du pied de page",
       langSwitch: "Choix de la langue",
       workflow: "Étapes du produit",
       menu: "Ouvrir le menu",
@@ -178,17 +181,15 @@ const STRINGS = {
     meta: {
       title: "JobStream DZ | Fresh jobs in Algeria",
       description:
-        "Browse recent Algeria job opportunities in an open, multi-source, duplicate-filtered feed.",
+        "Get fresh Algeria job opportunities for free on Telegram: updates every 3 minutes, 4 sources, no duplicates.",
     },
     nav: {
-      home: "Home",
       jobsToday: "Today's jobs",
       cvMatch: "CV match",
-      proof: "Proof",
-      feed: "Digest",
+      feed: "Latest jobs",
       story: "Method",
       faq: "FAQ",
-      join: "Get job alerts",
+      join: "Join on Telegram",
     },
     hero: {
       kicker: "Your next step starts here",
@@ -196,8 +197,7 @@ const STRINGS = {
         "Find your next job in <span>Algeria.</span>",
       subtitle:
         "Explore recent jobs near you. From your first internship to your next opportunity.",
-      join: "Explore jobs",
-      how: "CV match",
+      join: "Join the Telegram channel",
       search: {
         label: "Search job offers",
         queryLabel: "Job title or company",
@@ -209,13 +209,12 @@ const STRINGS = {
         noExperience: "No experience",
         internship: "Internships",
         junior: "Early career",
-        remote: "Remote work",
-        scope: "Searches loaded offers. Shortcuts use explicitly stated job criteria.",
+        scope: "Search jobs collected during the last 24 hours.",
       },
       monumentAlt: "Martyrs Memorial",
       mapAlt: "Map of opportunities in Algeria",
       flagAlt: "Algerian flag",
-      phoneAlt: "Preview of the JobStream DZ job feed",
+      phoneAlt: "Preview of JobStream DZ Telegram channel",
       phoneLinkLabel: "See the jobs digest",
       cvTeaser: {
         title: "Upload your CV",
@@ -241,28 +240,30 @@ const STRINGS = {
           title: "4 verified sources",
           description: "Active platforms are combined into one focused reading flow.",
         },
-        openSource: {
-          title: "100% open source",
-          description: "A self-hosted foundation you can adapt to your own job feed.",
+        telegram: {
+          title: "100% free on Telegram",
+          description: "A fast mobile channel you can open the moment you start searching.",
         },
       },
     },
     feed: {
-      title: "Latest published digest",
-      subtitle: "The latest jobs from the configured sheet, with a local preview when the backend is unavailable.",
-      loading: "Loading latest digest...",
-      empty: "No digest is available yet.",
+      title: "Jobs from the last 24 hours",
+      subtitle: "Search jobs collected over the last 24 hours from all sources.",
+      loading: "Loading jobs from the last 24 hours...",
+      empty: "No jobs collected during the last 24 hours.",
+      error: "Unable to load jobs. Please retry.",
+      retry: "Retry",
+      loadMore: "Show more jobs",
       fallback: "Digest preview",
-      fallbackNote: "Local preview shown while the live feed reconnects.",
+      fallbackNote: "Showing recent sample listings while the feed reconnects.",
       updatedPrefix: "Published",
-      statusPrefix: "Digest published",
+      statusPrefix: "Updated",
       sourceLabel: "Source",
       apply: "Apply now",
-      more: "Try CV match",
+      more: "See more jobs on Telegram",
       untitled: "Untitled role",
       unknownCompany: "Unknown company",
       unknownLocation: "Unknown location",
-      unavailableLink: "Link unavailable",
       filters: {
         searchLabel: "Filter jobs",
         searchPlaceholder: "Search a role, company…",
@@ -281,7 +282,7 @@ const STRINGS = {
       },
     },
     phonePreview: {
-      eyebrow: "Live job feed",
+      eyebrow: "Live Telegram digest",
       fallbackEyebrow: "Digest preview",
       badgeLive: "Live",
       badgePreview: "Preview",
@@ -308,27 +309,27 @@ const STRINGS = {
           description: "Duplicates, repeated posts, and weak signals are reduced before publishing.",
         },
         deliver: {
-          title: "Web publishing",
+          title: "Telegram delivery",
           description: "Ready-to-review roles arrive in a mobile, shareable format.",
         },
         feed: {
           title: "Live on-site feed",
-          description: "The same sheet powers the live site feed and CV matching engine.",
+          description: "The same digest powers the on-site feed in real time — no Telegram needed.",
         },
       },
     },
     faq: {
       eyebrow: "Good to know",
       title: "Frequently asked questions",
-      subtitle: "What you should know before deploying your own instance.",
+      subtitle: "What you should know before joining.",
       items: {
         free: {
           question: "Is it really free?",
-          answer: "Yes. The code is available under the MIT License and can be self-hosted.",
+          answer: "Yes. Access to the JobStream DZ Telegram channel is completely free.",
         },
         frequency: {
           question: "How often is it updated?",
-          answer: "The feed updates every 3 minutes when new opportunities are available.",
+          answer: "As soon as a new listing appears on a source, it is published in the next cycle, on the channel and on this site.",
         },
         quality: {
           question: "How do you avoid duplicates?",
@@ -337,13 +338,18 @@ const STRINGS = {
       },
     },
     banner: {
-      title: "Find jobs that fit your profile.",
-      subtitle: "Upload your CV and compare it with recent jobs from your instance.",
-      join: "Try CV match",
-      footnote: "Open source, self-hosted, and built for job seekers",
+      title: "Get the next opportunities before everyone else.",
+      subtitle: "Join JobStream DZ and save time every day.",
+      join: "Join the Telegram channel",
+      footnote: "Free, fast, and built for job seekers in Algeria",
+    },
+    footer: {
+      telegram: "Telegram channel",
+      copyright: "© 2026 JobStream DZ",
     },
     a11y: {
       nav: "Main navigation",
+      footerNav: "Footer links",
       langSwitch: "Language switcher",
       workflow: "Product workflow",
       menu: "Open menu",
@@ -351,19 +357,17 @@ const STRINGS = {
   },
   ar: {
     meta: {
-      title: "JobStream DZ | أحدث وظائف الجزائر",
+      title: "JobStream DZ | أحدث وظائف الجزائر على تيليجرام",
       description:
-        "تصفح أحدث فرص العمل في الجزائر ضمن قائمة مفتوحة متعددة المصادر وبدون تكرار.",
+        "استقبل أحدث فرص العمل في الجزائر مجانا عبر تيليجرام: تحديث كل 3 دقائق، 4 مصادر، وبدون تكرار.",
     },
     nav: {
-      home: "الرئيسية",
       jobsToday: "وظائف اليوم",
       cvMatch: "مطابقة السيرة",
-      proof: "الدليل",
-      feed: "الملخص",
+      feed: "آخر الوظائف",
       story: "الطريقة",
       faq: "الأسئلة",
-      join: "استقبل الوظائف",
+      join: "انضم عبر تيليجرام",
     },
     hero: {
       kicker: "خطوتك القادمة تبدأ هنا",
@@ -371,8 +375,7 @@ const STRINGS = {
         "اعثر على وظيفتك القادمة في <span>الجزائر.</span>",
       subtitle:
         "تصفح الوظائف الحديثة بالقرب منك، من أول تربص إلى فرصتك القادمة.",
-      join: "تصفح الوظائف",
-      how: "مطابقة السيرة",
+      join: "انضم إلى قناة تيليجرام",
       search: {
         label: "البحث عن عروض العمل",
         queryLabel: "الوظيفة أو الشركة",
@@ -384,13 +387,12 @@ const STRINGS = {
         noExperience: "بدون خبرة",
         internship: "تربصات",
         junior: "بداية المسار المهني",
-        remote: "العمل عن بعد",
-        scope: "البحث ضمن العروض المحملة. تعتمد الاختصارات على المعايير المذكورة صراحة في العرض.",
+        scope: "ابحث ضمن الوظائف التي جُمعت خلال آخر 24 ساعة.",
       },
       monumentAlt: "مقام الشهيد",
       mapAlt: "خريطة فرص العمل في الجزائر",
       flagAlt: "العلم الجزائري",
-      phoneAlt: "معاينة قائمة وظائف JobStream DZ",
+      phoneAlt: "معاينة قناة JobStream DZ على تيليجرام",
       phoneLinkLabel: "شاهد ملخص الوظائف",
       cvTeaser: {
         title: "حمّل سيرتك الذاتية",
@@ -416,28 +418,30 @@ const STRINGS = {
           title: "4 مصادر موثوقة",
           description: "تجتمع المنصات النشطة في قراءة واحدة مركزة.",
         },
-        openSource: {
-          title: "مفتوح المصدر 100%",
-          description: "قاعدة ذاتية الاستضافة يمكنك تكييفها مع قائمة الوظائف الخاصة بك.",
+        telegram: {
+          title: "مجاني 100% على تيليجرام",
+          description: "قناة سريعة للهاتف تفتحها فور بدء البحث.",
         },
       },
     },
     feed: {
-      title: "آخر ملخص منشور",
-      subtitle: "آخر الوظائف من الجدول المهيأ، مع معاينة محلية عند غياب الواجهة الخلفية.",
-      loading: "جار تحميل آخر ملخص...",
-      empty: "لا يوجد ملخص منشور حاليا.",
+      title: "وظائف آخر 24 ساعة",
+      subtitle: "ابحث ضمن الوظائف التي جُمعت خلال آخر 24 ساعة من جميع المصادر.",
+      loading: "جار تحميل وظائف آخر 24 ساعة...",
+      empty: "لا توجد وظائف جُمعت خلال آخر 24 ساعة.",
+      error: "تعذر تحميل الوظائف. يرجى المحاولة مجددا.",
+      retry: "إعادة المحاولة",
+      loadMore: "عرض المزيد من الوظائف",
       fallback: "معاينة الملخص",
-      fallbackNote: "تظهر معاينة محلية أثناء إعادة الاتصال بالتدفق المباشر.",
+      fallbackNote: "نعرض أمثلة من العروض الأخيرة أثناء إعادة الاتصال.",
       updatedPrefix: "نشر في",
-      statusPrefix: "ملخص منشور",
+      statusPrefix: "آخر تحديث",
       sourceLabel: "المصدر",
       apply: "قدّم الآن",
-      more: "جرّب مطابقة السيرة",
+      more: "شاهد المزيد من الوظائف على تيليجرام",
       untitled: "وظيفة بدون عنوان",
       unknownCompany: "شركة غير محددة",
       unknownLocation: "مكان غير محدد",
-      unavailableLink: "الرابط غير متاح",
       filters: {
         searchLabel: "تصفية الوظائف",
         searchPlaceholder: "ابحث عن وظيفة أو شركة…",
@@ -456,7 +460,7 @@ const STRINGS = {
       },
     },
     phonePreview: {
-      eyebrow: "قائمة وظائف مباشرة",
+      eyebrow: "ملخص تيليجرام مباشر",
       fallbackEyebrow: "معاينة الملخص",
       badgeLive: "مباشر",
       badgePreview: "معاينة",
@@ -483,27 +487,27 @@ const STRINGS = {
           description: "نقلل التكرار والإشارات الضعيفة قبل النشر.",
         },
         deliver: {
-          title: "نشر عبر الويب",
+          title: "نشر عبر تيليجرام",
           description: "تصلك الوظائف الجاهزة للمراجعة بصيغة سهلة على الهاتف.",
         },
         feed: {
           title: "بث مباشر على الموقع",
-          description: "يغذي نفس الجدول قائمة الموقع ومحرك مطابقة السيرة.",
+          description: "نفس الملخّص يغذّي قائمة الموقع في الوقت الفعلي — دون الحاجة إلى تيليجرام.",
         },
       },
     },
     faq: {
       eyebrow: "معلومات مفيدة",
       title: "أسئلة شائعة",
-      subtitle: "أهم ما تحتاج معرفته قبل نشر نسختك الخاصة.",
+      subtitle: "أهم ما تحتاج معرفته قبل الانضمام.",
       items: {
         free: {
           question: "هل الخدمة مجانية فعلا؟",
-          answer: "نعم، الكود متاح برخصة MIT ويمكن استضافته ذاتيا.",
+          answer: "نعم، الانضمام إلى قناة JobStream DZ مجاني بالكامل.",
         },
         frequency: {
           question: "كم مرة تتحدث العروض؟",
-          answer: "يمكن ضبط وقت تشغيل أداة الجمع حسب المصادر وحدود الاستخدام.",
+          answer: "بمجرد ظهور عرض جديد في أحد المصادر، يُنشر في الدورة التالية على القناة وعلى الموقع.",
         },
         quality: {
           question: "كيف تمنعون التكرار؟",
@@ -512,13 +516,18 @@ const STRINGS = {
       },
     },
     banner: {
-      title: "اعثر على الوظائف المناسبة لملفك.",
-      subtitle: "حمّل سيرتك وقارنها بالوظائف الحديثة في نسختك.",
-      join: "جرّب مطابقة السيرة",
-      footnote: "مفتوح المصدر وذاتي الاستضافة ومصمم للباحثين عن عمل",
+      title: "استقبل الفرص القادمة قبل غيرك.",
+      subtitle: "انضم إلى JobStream DZ ووفّر وقتك في البحث اليومي.",
+      join: "انضم إلى قناة تيليجرام",
+      footnote: "مجاني، سريع، ومصمم للباحثين عن عمل في الجزائر",
+    },
+    footer: {
+      telegram: "قناة تيليجرام",
+      copyright: "© 2026 JobStream DZ",
     },
     a11y: {
       nav: "التنقل الرئيسي",
+      footerNav: "روابط التذييل",
       langSwitch: "تبديل اللغة",
       workflow: "خطوات سير العمل",
       menu: "فتح القائمة",
@@ -528,7 +537,9 @@ const STRINGS = {
 
 const STORAGE_KEY = "jobstream_lang";
 const DEFAULT_LANG = "fr";
-const LIVE_FEED_PATH = "/api/feed/latest";
+const LIVE_FEED_PATH = "/api/jobs/recent?hours=24";
+const FEED_PAGE_SIZE = 24;
+let feedVisibleLimit = FEED_PAGE_SIZE;
 const PHONE_PREVIEW_LIMIT = 3;
 const PHONE_EXPANDED_LIMIT = 10;
 const liveFeedState = {
@@ -551,7 +562,6 @@ const RECENCY_BUCKETS = [
   { key: "day", minutes: 1440 },
   { key: "week", minutes: 10080 },
 ];
-
 const WILAYAS = `01|Adrar|أدرار
 02|Chlef|الشلف
 03|Laghouat|الأغواط
@@ -660,6 +670,9 @@ function getFeedEndpoint() {
 }
 
 function normalizeFeedPayload(payload) {
+  if (![payload?.jobs, payload?.items, payload?.data?.jobs, payload?.digest?.jobs].some(Array.isArray)) {
+    return null;
+  }
   const jobs = Array.isArray(payload?.jobs)
     ? payload.jobs
     : Array.isArray(payload?.items)
@@ -670,13 +683,9 @@ function normalizeFeedPayload(payload) {
           ? payload.digest.jobs
           : [];
 
-  if (!jobs.length) {
-    return null;
-  }
-
   return {
     ...payload,
-    published_at: payload.published_at || payload.updated_at || payload.created_at || payload.data?.published_at || "",
+    published_at: payload.generated_at || payload.published_at || payload.updated_at || payload.created_at || payload.data?.published_at || "",
     jobs,
   };
 }
@@ -692,7 +701,7 @@ function getFallbackFeed(lang) {
         source: "Emploitic",
         published_date: "Aujourd'hui",
         published_time_utc: "09:40 UTC",
-        apply_url: "",
+        apply_url: "https://t.me/jobstream_dz",
       },
       {
         title: "Comptable confirmé",
@@ -701,7 +710,7 @@ function getFallbackFeed(lang) {
         source: "JobDz",
         published_date: "Aujourd'hui",
         published_time_utc: "09:34 UTC",
-        apply_url: "",
+        apply_url: "https://t.me/jobstream_dz",
       },
       {
         title: "Assistant marketing",
@@ -710,7 +719,7 @@ function getFallbackFeed(lang) {
         source: "LinkedIn",
         published_date: "Aujourd'hui",
         published_time_utc: "09:29 UTC",
-        apply_url: "",
+        apply_url: "https://t.me/jobstream_dz",
       },
     ],
     en: [
@@ -721,7 +730,7 @@ function getFallbackFeed(lang) {
         source: "Emploitic",
         published_date: "Today",
         published_time_utc: "09:40 UTC",
-        apply_url: "",
+        apply_url: "https://t.me/jobstream_dz",
       },
       {
         title: "Senior Accountant",
@@ -730,7 +739,7 @@ function getFallbackFeed(lang) {
         source: "JobDz",
         published_date: "Today",
         published_time_utc: "09:34 UTC",
-        apply_url: "",
+        apply_url: "https://t.me/jobstream_dz",
       },
       {
         title: "Marketing Assistant",
@@ -739,7 +748,7 @@ function getFallbackFeed(lang) {
         source: "LinkedIn",
         published_date: "Today",
         published_time_utc: "09:29 UTC",
-        apply_url: "",
+        apply_url: "https://t.me/jobstream_dz",
       },
     ],
     ar: [
@@ -750,7 +759,7 @@ function getFallbackFeed(lang) {
         source: "Emploitic",
         published_date: "اليوم",
         published_time_utc: "09:40 UTC",
-        apply_url: "",
+        apply_url: "https://t.me/jobstream_dz",
       },
       {
         title: "محاسب مؤكد",
@@ -759,7 +768,7 @@ function getFallbackFeed(lang) {
         source: "JobDz",
         published_date: "اليوم",
         published_time_utc: "09:34 UTC",
-        apply_url: "",
+        apply_url: "https://t.me/jobstream_dz",
       },
       {
         title: "مساعد تسويق",
@@ -768,7 +777,7 @@ function getFallbackFeed(lang) {
         source: "LinkedIn",
         published_date: "اليوم",
         published_time_utc: "09:29 UTC",
-        apply_url: "",
+        apply_url: "https://t.me/jobstream_dz",
       },
     ],
   };
@@ -810,7 +819,7 @@ function getFallbackFeed(lang) {
     source,
     published_date: lang === "ar" ? "اليوم" : lang === "en" ? "Today" : "Aujourd'hui",
     published_time_utc: "09:21 UTC",
-    apply_url: "",
+    apply_url: "https://t.me/jobstream_dz",
   }));
 
   return {
@@ -947,7 +956,7 @@ function getUniqueFeedLocations(jobs) {
 }
 
 function getJobAgeMinutes(job, digestPublishedAt) {
-  const candidates = [getJobPublishedAt(job), digestPublishedAt];
+  const candidates = [job.added_at, job.arrival_date, getJobPublishedAt(job)];
   for (let i = 0; i < candidates.length; i += 1) {
     const raw = candidates[i];
     if (!raw) {
@@ -990,7 +999,6 @@ function jobMatchesCategory(job, category) {
   const experience = isPlaceholderValue(job.experience_years) ? "" : normalizeSearchText(job.experience_years);
   const level = isPlaceholderValue(job.job_level) ? "" : normalizeSearchText(job.job_level);
   const contract = isPlaceholderValue(job.contract_type) ? "" : normalizeSearchText(job.contract_type);
-  const mode = isPlaceholderValue(job.work_mode) ? "" : normalizeSearchText(job.work_mode);
   if (category === "no-experience") {
     return /^(0|0\s*(ans?|years?))$/.test(experience) ||
       /sans experience|aucune experience|no experience(?: required| needed)?|بدون خبرة|دون خبرة/.test(`${experience} ${level} ${title}`);
@@ -1000,13 +1008,6 @@ function jobMatchesCategory(job, category) {
   }
   if (category === "junior") {
     return /\b(junior|entry[ -]level|graduate|debutant|debut de carriere)\b|مبتدئ|حديث التخرج|بداية المسار/.test(`${level} ${title}`);
-  }
-  if (category === "remote") {
-    const text = `${mode} ${title}`;
-    if (/not remote|no remote|on[ -]site only|presentiel uniquement|hybrid|hybride|هجين|ليس عن بعد/.test(text)) {
-      return false;
-    }
-    return /\bremote\b|teletravail|work from home|عن بعد/.test(text);
   }
   return false;
 }
@@ -1036,6 +1037,7 @@ function setupHeroSearch() {
     }
     const query = document.querySelector("[data-hero-query]").value;
     feedFilterState.query = normalizeSearchText(query);
+    feedVisibleLimit = FEED_PAGE_SIZE;
     feedFilterState.wilaya = document.querySelector("[data-hero-wilaya]").value;
     const feedQuery = document.querySelector("[data-feed-search]");
     if (feedQuery) {
@@ -1185,26 +1187,20 @@ function initMotionSystem() {
     gsap.utils
       .toArray(".story-pipeline, .proof-pipeline, .faq-pipeline")
       .forEach((pipeline) => {
-        const progressFill = pipeline.querySelector(
-          ".story-progress-fill, .proof-progress-fill, .faq-progress-fill"
+        gsap.fromTo(
+          pipeline,
+          { "--progress": 0 },
+          {
+            "--progress": 1,
+            ease: "none",
+            scrollTrigger: {
+              trigger: pipeline,
+              start: "top 70%",
+              end: "bottom 60%",
+              scrub: true,
+            },
+          }
         );
-        if (progressFill) {
-          gsap.fromTo(
-            progressFill,
-            { scaleY: 0 },
-            {
-              scaleY: 1,
-              ease: "none",
-              transformOrigin: "top",
-              scrollTrigger: {
-                trigger: pipeline,
-                start: "top 70%",
-                end: "bottom 60%",
-                scrub: true,
-              },
-            }
-          );
-        }
 
         pipeline.querySelectorAll("li").forEach((step) => {
           ScrollTrigger.create({
@@ -1602,7 +1598,7 @@ function renderPhonePreview(lang) {
 
   ctaNode.textContent = dict.phonePreview.cta;
   expandNode.textContent = dict.phonePreview.showMore;
-  expandNode.href = "#live-feed";
+  expandNode.href = "/jobs-today/";
   expandNode.hidden = true;
   expandNode.removeAttribute("aria-expanded");
 
@@ -1767,12 +1763,17 @@ function renderLiveFeed(lang) {
   const controlsNode = document.querySelector("[data-live-feed-controls]");
   const clearNode = document.querySelector("[data-feed-clear]");
   const countNode = document.querySelector("[data-feed-count]");
+  const moreNode = document.querySelector("[data-feed-load-more]");
+  if (moreNode) {
+    moreNode.hidden = true;
+  }
 
   if (!statusNode || !listNode) {
     return;
   }
 
   if (liveFeedState.loading) {
+    if (countNode) countNode.textContent = "";
     listNode.setAttribute("aria-busy", "true");
     listNode.setAttribute("data-feed-mode", "empty");
     if (controlsNode) {
@@ -1792,8 +1793,10 @@ function renderLiveFeed(lang) {
     if (controlsNode) {
       controlsNode.hidden = true;
     }
-    statusNode.innerHTML = `<span class="live-feed-status-main">${escapeHtml(dict.feed.empty)}</span>`;
-    listNode.innerHTML = `<p class="live-feed-empty">${escapeHtml(dict.feed.empty)}</p>`;
+    const message = liveFeedState.error ? dict.feed.error : dict.feed.empty;
+    statusNode.innerHTML = `<span class="live-feed-status-main">${escapeHtml(message)}</span>`;
+    listNode.innerHTML = `<p class="live-feed-empty">${escapeHtml(message)}${liveFeedState.error ? `<br><button type="button" class="feed-load-more" data-feed-retry>${escapeHtml(dict.feed.retry)}</button>` : ""}</p>`;
+    if (countNode) countNode.textContent = `${dict.feed.filters.resultsLabel} : 0`;
     return;
   }
 
@@ -1843,38 +1846,56 @@ function renderLiveFeed(lang) {
     return;
   }
 
-  listNode.innerHTML = filteredJobs
+  if (moreNode) {
+    moreNode.hidden = filteredJobs.length <= feedVisibleLimit;
+  }
+  listNode.innerHTML = filteredJobs.slice(0, feedVisibleLimit)
     .map((job) => {
       const title = escapeHtml(job.title || dict.feed.untitled);
-      const companyName = escapeHtml(isPlaceholderValue(job.company_name) ? dict.feed.unknownCompany : job.company_name);
-      const location = escapeHtml(isPlaceholderValue(job.location) ? dict.feed.unknownLocation : job.location);
+      const hasCompany = !isPlaceholderValue(job.company_name);
+      const companyName = escapeHtml(hasCompany ? job.company_name : dict.feed.unknownCompany);
       const source = escapeHtml(job.source || "unknown");
-      const relativeJobAge = escapeHtml(formatRelativeTime(getJobPublishedAt(job) || digestPublishedAt, safeLang));
+      const publishedAt = getJobPublishedAt(job) || job.added_at || job.arrival_date || "";
+      const relativeJobAge = formatRelativeTime(publishedAt, safeLang);
       const applyUrl = typeof job.apply_url === "string" ? job.apply_url.trim() : "";
-      const publishedLabel = escapeHtml(getJobPublishedLabel(job));
+      const publishedLabel = getJobPublishedLabel(job);
       const sourceClass = sourceClassName(job.source || "unknown");
 
-      const actionMarkup = applyUrl
-        ? `<a class="live-job-link" href="${escapeHtml(applyUrl)}" target="_blank" rel="noreferrer">${escapeHtml(dict.feed.apply)}</a>`
-        : `<span class="live-job-link is-disabled">${escapeHtml(dict.feed.unavailableLink)}</span>`;
+      const chips = [job.location, job.contract_type, job.work_mode]
+        .filter((value) => !isPlaceholderValue(value))
+        .map((value) => `<li class="live-job-chip">${escapeHtml(String(value).trim())}</li>`)
+        .join("");
+
+      const ageText = relativeJobAge || publishedLabel;
+      const ageMarkup = ageText
+        ? `<time class="live-job-age"${publishedAt ? ` datetime="${escapeHtml(publishedAt)}"` : ""}${publishedLabel ? ` title="${escapeHtml(publishedLabel)}"` : ""}>${escapeHtml(ageText)}</time>`
+        : "";
+
+      const titleMarkup = applyUrl
+        ? `<a class="live-job-title-link" href="${escapeHtml(applyUrl)}" target="_blank" rel="noreferrer">${title}</a>`
+        : title;
+
+      const footerMarkup = applyUrl
+        ? `<div class="live-job-footer">
+            <span class="live-job-cta" aria-hidden="true">
+              ${escapeHtml(dict.feed.apply)}
+              <svg class="icon"><use href="#icon-arrow-right"></use></svg>
+            </span>
+          </div>`
+        : "";
 
       return `
-        <article class="live-job-card">
+        <article class="live-job-card${applyUrl ? " is-linked" : ""}">
           <div class="live-job-topline">
             <p class="live-job-source ${sourceClass}">${source}</p>
-            <p class="live-job-age">${relativeJobAge}</p>
+            ${ageMarkup}
           </div>
-          <div>
-            <h3>${title}</h3>
+          <div class="live-job-heading">
+            <h3>${titleMarkup}</h3>
+            <p class="live-job-company">${companyName}</p>
           </div>
-          <div class="live-job-meta">
-            <p>${companyName}</p>
-            <p>${location}</p>
-          </div>
-          <div class="live-job-footer">
-            <p>${publishedLabel || ""}</p>
-            ${actionMarkup}
-          </div>
+          ${chips ? `<ul class="live-job-chips">${chips}</ul>` : ""}
+          ${footerMarkup}
         </article>
       `;
     })
@@ -1913,7 +1934,7 @@ async function fetchLatestFeed() {
   } catch (error) {
     liveFeedState.data = null;
     liveFeedState.error = error instanceof Error ? error.message : "Feed request failed";
-    liveFeedState.fallback = true;
+    liveFeedState.fallback = false;
   } finally {
     liveFeedState.loading = false;
     const finalLang = getCurrentLanguage();
@@ -2063,6 +2084,15 @@ function setupFeedFilters() {
   const controlsNode = document.querySelector("[data-live-feed-controls]");
   const searchNode = document.querySelector("[data-feed-search]");
   const clearNode = document.querySelector("[data-feed-clear]");
+  document.querySelector("[data-feed-load-more]")?.addEventListener("click", () => {
+    feedVisibleLimit += FEED_PAGE_SIZE;
+    renderLiveFeed(getCurrentLanguage());
+  });
+  document.addEventListener("click", (event) => {
+    if (event.target.closest("[data-feed-retry]")) {
+      fetchLatestFeed();
+    }
+  });
 
   if (searchNode) {
     searchNode.addEventListener("input", (event) => {
@@ -2073,6 +2103,7 @@ function setupFeedFilters() {
       feedSearchDebounce = window.setTimeout(() => {
         feedSearchDebounce = 0;
         feedFilterState.query = normalizeSearchText(value);
+        feedVisibleLimit = FEED_PAGE_SIZE;
         const heroQuery = document.querySelector("[data-hero-query]");
         if (heroQuery) {
           heroQuery.value = value;
@@ -2090,6 +2121,7 @@ function setupFeedFilters() {
       }
       const facet = chip.getAttribute("data-chip-facet");
       const value = chip.getAttribute("data-chip-value");
+      feedVisibleLimit = FEED_PAGE_SIZE;
       if (facet === "source") {
         toggleSetValue(feedFilterState.sources, value);
       } else if (facet === "location") {
@@ -2133,6 +2165,7 @@ function setupFeedFilters() {
   if (clearNode) {
     clearNode.addEventListener("click", () => {
       feedFilterState.sources.clear();
+      feedVisibleLimit = FEED_PAGE_SIZE;
       feedFilterState.locations.clear();
       feedFilterState.recency = "";
       feedFilterState.query = "";

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 
 import pytest
@@ -15,6 +15,7 @@ ALGERIA_TZ = ZoneInfo("Africa/Algiers")
 @pytest.fixture(autouse=True)
 def api_state(monkeypatch: pytest.MonkeyPatch) -> None:
     api._rate_limit_hits.clear()
+    api._recent_jobs_cache.clear()
     monkeypatch.setenv("SPREADSHEET_ID", "test-sheet")
     monkeypatch.setenv("SHEET_NAME", "jobs")
     monkeypatch.setenv("CV_MATCH_RATE_LIMIT_REQUESTS", "3")
@@ -79,6 +80,41 @@ def test_latest_feed_reads_recent_sheet_rows_directly(
     assert payload["meta"]["skipped_duplicates"] == 1
     assert payload["meta"]["skipped_without_links"] == 1
     assert payload["meta"]["skipped_outside_window"] == 1
+
+
+def test_recent_search_covers_seven_days_without_digest_or_row_limits(
+    client: TestClient, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    today = datetime.now(ALGERIA_TZ).date()
+    recent = (today - timedelta(days=6)).isoformat()
+    old = (today - timedelta(days=7)).isoformat()
+    rows = [
+        {"title": f"Role {i}", "apply_url": f"https://example.com/{i}", "added_at": _today()}
+        for i in range(1200)
+    ] + [
+        {"title": "Last day in window", "apply_url": "https://example.com/boundary", "added_at": recent, "contract_type": "Stage"},
+        {"title": "Too old", "apply_url": "https://example.com/old", "added_at": old},
+        {"title": "Duplicate", "apply_url": "https://example.com/0", "added_at": _today()},
+    ]
+    calls = []
+
+    def fetch(**kwargs):
+        calls.append(kwargs)
+        return rows
+
+    monkeypatch.setattr(api, "_fetch_rows", fetch)
+    response = client.get("/api/jobs/recent")
+    assert response.status_code == 200
+    payload = response.json()
+    assert payload["job_count"] == 1201
+    assert payload["meta"]["date_window_start"] == recent
+    assert payload["meta"]["days"] == 7
+    assert payload["jobs"][-1]["title"] == "Last day in window"
+    assert payload["jobs"][-1]["contract_type"] == "Stage"
+    assert calls == [{"max_rows": None}]
+    assert client.get("/api/jobs/recent").json() == payload
+    assert len(calls) == 1
+    assert client.get("/api/jobs/recent?days=8").status_code == 422
 
 
 def test_jobs_today_uses_published_date_fallback(

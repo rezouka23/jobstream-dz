@@ -21,6 +21,13 @@ node_modules/
 *service-account*.json
 *credentials*.json
 .jobstream-scraper-state.json
+seen_telegram_jobs.json
+seen_telegram_jobs.json.bak.*
+latest_digest.json
+latest_remote_digest.json
+digest_history/
+docs/
+*.bak
 .DS_Store
 .idea/
 .vscode/

@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JobStream DZ | Offres d'emploi en Algérie</title>
+    <title>JobStream DZ | Offres d'emploi fraîches en Algérie</title>
     <meta
       name="description"
-      content="JobStream DZ regroupe les offres d'emploi en Algérie dans un flux clair, récent et sans doublons."
+      content="Recevez gratuitement les offres d'emploi les plus récentes en Algérie sur Telegram : mises à jour toutes les 3 minutes, 4 sources, sans doublons."
     />
     <link rel="icon" type="image/png" href="assets/logo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -15,7 +15,7 @@
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=20261016-illustrated-hero-24h" />
   </head>
   <body>
     <svg class="icon-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
@@ -40,11 +40,6 @@
       <symbol id="icon-funnel" viewBox="0 0 24 24">
         <path d="M4 6H20L14 13V19L10 21V13L4 6Z" />
       </symbol>
-      <symbol id="icon-briefcase" viewBox="0 0 24 24">
-        <rect x="3.5" y="7.5" width="17" height="12" rx="2" />
-        <path d="M8.5 7.5V6.5C8.5 5.4 9.4 4.5 10.5 4.5H13.5C14.6 4.5 15.5 5.4 15.5 6.5V7.5" />
-        <path d="M3.5 12.5H20.5" />
-      </symbol>
       <symbol id="icon-lightning" viewBox="0 0 24 24">
         <path d="M13.5 2.5L6.5 13H11L10.5 21.5L17.5 11H13.5V2.5Z" />
       </symbol>
@@ -62,6 +57,10 @@
       </symbol>
       <symbol id="icon-chevron-right" viewBox="0 0 24 24">
         <path d="M9 6L15 12L9 18" />
+      </symbol>
+      <symbol id="icon-arrow-right" viewBox="0 0 24 24">
+        <path d="M5 12H19" />
+        <path d="M13 6L19 12L13 18" />
       </symbol>
       <symbol id="icon-doc-upload" viewBox="0 0 24 24">
         <path d="M14 3.5H7C5.9 3.5 5 4.4 5 5.5V18.5C5 19.6 5.9 20.5 7 20.5H17C18.1 20.5 19 19.6 19 18.5V8.5L14 3.5Z" />
@@ -87,16 +86,15 @@
         </a>
 
         <div class="site-menu" id="site-menu">
-          <nav class="main-nav" aria-label="Main navigation" data-i18n-aria-label="a11y.nav">
-            <a href="#" data-i18n="nav.home"></a>
-            <a href="/cv-match/" data-i18n="nav.cvMatch"></a>
-            <a href="#proof" data-i18n="nav.proof"></a>
-            <a href="#live-feed" data-i18n="nav.feed"></a>
-            <a href="#story" data-i18n="nav.story"></a>
-            <a href="#faq" data-i18n="nav.faq"></a>
+          <nav class="main-nav" aria-label="Navigation principale" data-i18n-aria-label="a11y.nav">
+            <a href="#live-feed" data-i18n="nav.feed">Dernières offres</a>
+            <a href="/jobs-today/" data-i18n="nav.jobsToday">Offres du jour</a>
+            <a href="/cv-match/" data-i18n="nav.cvMatch">Matching CV</a>
+            <a href="#story" data-i18n="nav.story">Méthode</a>
+            <a href="#faq" data-i18n="nav.faq">FAQ</a>
           </nav>
 
-          <div class="lang-switch" role="group" aria-label="Language switcher" data-i18n-aria-label="a11y.langSwitch">
+          <div class="lang-switch" role="group" aria-label="Choix de la langue" data-i18n-aria-label="a11y.langSwitch">
             <button type="button" data-lang="fr" class="lang-btn is-active">FR</button>
             <button type="button" data-lang="en" class="lang-btn">EN</button>
             <button type="button" data-lang="ar" class="lang-btn">AR</button>
@@ -104,9 +102,9 @@
         </div>
 
         <div class="topbar-actions">
-          <a href="/cv-match/" class="join-btn">
+          <a href="https://t.me/jobstream_dz" target="_blank" rel="noreferrer" class="join-btn">
             <svg class="icon plane" aria-hidden="true"><use href="#icon-paper-plane"></use></svg>
-            <span data-i18n="nav.join"></span>
+            <span data-i18n="nav.join">Rejoindre sur Telegram</span>
           </a>
 
           <button
@@ -114,7 +112,7 @@
             class="nav-toggle"
             aria-controls="site-menu"
             aria-expanded="false"
-            aria-label="Menu"
+            aria-label="Ouvrir le menu"
             data-i18n-aria-label="a11y.menu"
           >
             <svg class="icon nav-toggle-icon nav-toggle-icon-open" aria-hidden="true"><use href="#icon-menu"></use></svg>
@@ -125,42 +123,52 @@
 
       <main class="site-main">
         <section class="hero-panel" aria-labelledby="hero-title">
-          <img class="hero-monument" src="assets/monument.png" alt="Monument des Martyrs" data-i18n-alt="hero.monumentAlt" />
+          <div class="hero-illustration" aria-hidden="true">
+            <img
+              src="assets/career-connections.webp"
+              srcset="assets/career-connections-960.webp 960w, assets/career-connections.webp 1536w"
+              sizes="(max-width: 1000px) 100vw, 55vw"
+              width="1536"
+              height="1024"
+              alt=""
+              fetchpriority="high"
+              decoding="async"
+            />
+          </div>
 
           <div class="hero-copy">
-            <p class="hero-kicker" data-i18n="hero.kicker"></p>
-            <h1 id="hero-title" data-i18n-html="hero.title"></h1>
-            <p class="hero-sub" data-i18n="hero.subtitle"></p>
+            <p class="hero-kicker" data-i18n="hero.kicker">Votre prochaine étape commence ici</p>
+            <h1 id="hero-title" data-i18n-html="hero.title">Trouvez votre prochain emploi en <span>Algérie.</span></h1>
+            <p class="hero-sub" data-i18n="hero.subtitle">Explorez les offres récentes, près de chez vous. Du premier stage à votre prochaine opportunité.</p>
 
             <form class="hero-search" data-hero-search role="search" data-i18n-aria-label="hero.search.label">
               <label class="hero-search-field" for="hero-query">
-                <span data-i18n="hero.search.queryLabel"></span>
+                <span data-i18n="hero.search.queryLabel">Poste ou entreprise</span>
                 <input id="hero-query" type="search" name="query" data-hero-query autocomplete="off" data-i18n-placeholder="hero.search.placeholder" />
               </label>
               <label class="hero-search-field" for="hero-wilaya">
-                <span data-i18n="hero.search.wilayaLabel"></span>
+                <span data-i18n="hero.search.wilayaLabel">Wilaya</span>
                 <select id="hero-wilaya" name="wilaya" data-hero-wilaya></select>
               </label>
-              <button type="submit" class="btn-primary" data-i18n="hero.search.submit"></button>
+              <button type="submit" class="btn-primary" data-i18n="hero.search.submit">Rechercher</button>
             </form>
             <div class="hero-shortcuts" role="group" data-i18n-aria-label="hero.search.shortcutsLabel">
-              <button type="button" data-job-category="no-experience" aria-pressed="false" data-i18n="hero.search.noExperience"></button>
-              <button type="button" data-job-category="internship" aria-pressed="false" data-i18n="hero.search.internship"></button>
-              <button type="button" data-job-category="junior" aria-pressed="false" data-i18n="hero.search.junior"></button>
-              <button type="button" data-job-category="remote" aria-pressed="false" data-i18n="hero.search.remote"></button>
+              <button type="button" data-job-category="no-experience" aria-pressed="false" data-i18n="hero.search.noExperience">Sans expérience</button>
+              <button type="button" data-job-category="internship" aria-pressed="false" data-i18n="hero.search.internship">Stages</button>
+              <button type="button" data-job-category="junior" aria-pressed="false" data-i18n="hero.search.junior">Début de carrière</button>
             </div>
             <p class="hero-search-note" data-i18n="hero.search.scope"></p>
 
-            <a href="/cv-match/" class="hero-cv-teaser" hidden data-i18n-aria-label="hero.cvTeaser.ariaLabel">
+            <a href="/cv-match/" class="hero-cv-teaser" hidden aria-label="Importez votre CV pour trouver les offres qui vous correspondent" data-i18n-aria-label="hero.cvTeaser.ariaLabel">
               <span class="hero-cv-teaser-icon" aria-hidden="true">
                 <svg class="icon"><use href="#icon-doc-upload"></use></svg>
               </span>
               <span class="hero-cv-teaser-copy">
-                <span class="hero-cv-teaser-title" data-i18n="hero.cvTeaser.title"></span>
-                <span class="hero-cv-teaser-text" data-i18n="hero.cvTeaser.text"></span>
+                <span class="hero-cv-teaser-title" data-i18n="hero.cvTeaser.title">Importez votre CV</span>
+                <span class="hero-cv-teaser-text" data-i18n="hero.cvTeaser.text">Recevez les offres qui correspondent à votre profil.</span>
               </span>
               <span class="hero-cv-teaser-cta">
-                <span data-i18n="hero.cvTeaser.action"></span>
+                <span data-i18n="hero.cvTeaser.action">Tester le matching</span>
                 <svg class="icon" aria-hidden="true"><use href="#icon-chevron-right"></use></svg>
               </span>
             </a>
@@ -173,7 +181,7 @@
             <article class="phone-mockup" data-phone-preview>
               <button type="button" class="phone-open-trigger" data-phone-open data-i18n-aria-label="hero.phoneLinkLabel" aria-label="Voir le digest des offres" aria-expanded="false" aria-controls="phone-preview-screen"></button>
               <button type="button" class="phone-modal-close" data-phone-close data-i18n-aria-label="phonePreview.close" aria-label="Fermer l’aperçu" hidden>×</button>
-              <span class="phone-tap-hint" data-i18n="phonePreview.tapHint" aria-hidden="true"></span>
+              <span class="phone-tap-hint" data-i18n="phonePreview.tapHint" aria-hidden="true">Touchez pour ouvrir</span>
               <div class="phone-shell">
                 <div class="phone-bezel">
                   <div class="phone-speaker" aria-hidden="true"></div>
@@ -190,9 +198,9 @@
                     <p class="phone-preview-status" data-phone-preview-status></p>
                     <div class="phone-preview-list" data-phone-preview-list></div>
 
-                    <a href="#live-feed" class="phone-preview-expand" data-phone-expand hidden></a>
+                    <a href="/jobs-today/" class="phone-preview-expand" data-phone-expand hidden></a>
 
-                    <a class="phone-preview-cta" href="#live-feed">
+                    <a class="phone-preview-cta" href="https://t.me/jobstream_dz" target="_blank" rel="noreferrer">
                       <span data-phone-preview-cta></span>
                       <svg class="icon" aria-hidden="true"><use href="#icon-chevron-right"></use></svg>
                     </a>
@@ -205,43 +213,41 @@
 
         <section id="proof" class="proof-panel" aria-labelledby="proof-title">
           <div class="proof-head">
-            <p class="proof-eyebrow" data-i18n="proof.eyebrow"></p>
-            <h2 id="proof-title" data-i18n-html="proof.title"></h2>
-            <p class="proof-reveal" data-i18n="proof.subtitle"></p>
+            <p class="proof-eyebrow" data-i18n="proof.eyebrow">Pourquoi ça marche</p>
+            <h2 id="proof-title" data-i18n-html="proof.title">Un flux plus rapide, <span>moins bruyant.</span></h2>
+            <p class="proof-reveal" data-i18n="proof.subtitle">Les signaux qui comptent sont isolés avant d'arriver dans votre poche.</p>
           </div>
 
           <ol class="proof-pipeline">
-            <span class="proof-progress" aria-hidden="true"><i class="proof-progress-fill"></i></span>
-
             <li class="proof-step">
               <span class="proof-step-index" aria-hidden="true">01</span>
               <div class="proof-step-body">
-                <h3 data-i18n="proof.items.speed.title"></h3>
-                <p data-i18n="proof.items.speed.description"></p>
+                <h3 data-i18n="proof.items.speed.title">Mise à jour toutes les 3 min</h3>
+                <p data-i18n="proof.items.speed.description">Le digest surveille les nouvelles opportunités sans vous obliger à rafraîchir plusieurs sites.</p>
               </div>
             </li>
 
             <li class="proof-step">
               <span class="proof-step-index" aria-hidden="true">02</span>
               <div class="proof-step-body">
-                <h3 data-i18n="proof.items.clean.title"></h3>
-                <p data-i18n="proof.items.clean.description"></p>
+                <h3 data-i18n="proof.items.clean.title">Aucun doublon</h3>
+                <p data-i18n="proof.items.clean.description">Les annonces répétées sont filtrées pour garder un flux lisible.</p>
               </div>
             </li>
 
             <li class="proof-step">
               <span class="proof-step-index" aria-hidden="true">03</span>
               <div class="proof-step-body">
-                <h3 data-i18n="proof.items.sources.title"></h3>
-                <p data-i18n="proof.items.sources.description"></p>
+                <h3 data-i18n="proof.items.sources.title">4 sources vérifiées</h3>
+                <p data-i18n="proof.items.sources.description">Les plateformes actives sont regroupées dans une seule lecture.</p>
               </div>
             </li>
 
             <li class="proof-step">
               <span class="proof-step-index" aria-hidden="true">04</span>
               <div class="proof-step-body">
-                <h3 data-i18n="proof.items.openSource.title"></h3>
-                <p data-i18n="proof.items.openSource.description"></p>
+                <h3 data-i18n="proof.items.telegram.title">100% gratuit sur Telegram</h3>
+                <p data-i18n="proof.items.telegram.description">Un canal mobile, rapide et accessible dès que vous cherchez un poste.</p>
               </div>
             </li>
           </ol>
@@ -251,11 +257,8 @@
           <div class="live-feed-head">
             <div class="section-intro live-feed-intro">
               <div class="live-feed-title-wrap">
-                <span class="live-feed-title-icon" aria-hidden="true">
-                  <svg class="icon"><use href="#icon-briefcase"></use></svg>
-                </span>
-                <h2 id="live-feed-title" data-i18n="feed.title"></h2>
-                <p data-i18n="feed.subtitle"></p>
+                <h2 id="live-feed-title" data-i18n="feed.title">Offres des dernières 24 h</h2>
+                <p data-i18n="feed.subtitle">Recherchez parmi les offres collectées au cours des dernières 24 heures, de toutes les sources.</p>
               </div>
               <p class="live-feed-status" data-live-feed-status aria-live="polite" aria-atomic="true"></p>
             </div>
@@ -267,23 +270,26 @@
                   class="live-feed-search"
                   data-feed-search
                   autocomplete="off"
+                  placeholder="Rechercher un poste, une entreprise…"
+                  aria-label="Filtrer les offres"
                   data-i18n-placeholder="feed.filters.searchPlaceholder"
                   data-i18n-aria-label="feed.filters.searchLabel"
                 />
-                <button type="button" class="live-feed-clear" data-feed-clear data-i18n="feed.filters.clear" hidden></button>
+                <button type="button" class="live-feed-clear" data-feed-clear data-i18n="feed.filters.clear" hidden>Effacer les filtres</button>
               </div>
               <div class="live-feed-facets">
                 <div class="live-feed-facet" data-feed-facet-group="source">
-                  <span class="live-feed-facet-label" data-i18n="feed.filters.sourceLabel"></span>
+                  <span class="live-feed-facet-label" data-i18n="feed.filters.sourceLabel">Filtrer par source</span>
                   <div
                     class="live-feed-chips"
                     role="group"
                     data-feed-chips="source"
+                    aria-label="Filtrer par source"
                     data-i18n-aria-label="feed.filters.sourceLabel"
                   ></div>
                 </div>
                 <div class="live-feed-facet" data-feed-facet-group="location" hidden>
-                  <span class="live-feed-facet-label" data-i18n="feed.filters.locationLabel"></span>
+                  <span class="live-feed-facet-label" data-i18n="feed.filters.locationLabel">Filtrer par lieu</span>
                   <div class="live-feed-dropdown" data-feed-dropdown="location">
                     <button
                       type="button"
@@ -291,6 +297,7 @@
                       data-feed-dropdown-trigger="location"
                       aria-haspopup="true"
                       aria-expanded="false"
+                      aria-label="Filtrer par lieu"
                       data-i18n-aria-label="feed.filters.locationLabel"
                     >
                       <span class="live-feed-dropdown-value" data-feed-dropdown-value></span>
@@ -309,17 +316,19 @@
                       class="live-feed-dropdown-panel"
                       role="group"
                       data-feed-chips="location"
+                      aria-label="Filtrer par lieu"
                       data-i18n-aria-label="feed.filters.locationLabel"
                       hidden
                     ></div>
                   </div>
                 </div>
                 <div class="live-feed-facet" data-feed-facet-group="recency" hidden>
-                  <span class="live-feed-facet-label" data-i18n="feed.filters.recencyLabel"></span>
+                  <span class="live-feed-facet-label" data-i18n="feed.filters.recencyLabel">Fraîcheur</span>
                   <div
                     class="live-feed-chips"
                     role="group"
                     data-feed-chips="recency"
+                    aria-label="Fraîcheur"
                     data-i18n-aria-label="feed.filters.recencyLabel"
                   ></div>
                 </div>
@@ -330,12 +339,13 @@
 
           <div class="live-feed-body">
             <div class="live-feed-grid" data-live-feed-list aria-busy="true"></div>
+            <button type="button" class="feed-load-more" data-feed-load-more data-i18n="feed.loadMore" hidden></button>
 
-            <a href="/cv-match/" class="live-feed-more">
+            <a href="https://t.me/jobstream_dz" target="_blank" rel="noreferrer" class="live-feed-more">
               <span class="live-feed-more-icon" aria-hidden="true">
                 <svg class="icon"><use href="#icon-paper-plane"></use></svg>
               </span>
-              <span data-i18n="feed.more"></span>
+              <span data-i18n="feed.more">Voir plus d'offres sur Telegram</span>
               <span class="live-feed-more-arrow" aria-hidden="true">
                 <svg class="icon"><use href="#icon-chevron-right"></use></svg>
               </span>
@@ -345,43 +355,41 @@
 
         <section id="story" class="story-panel" aria-labelledby="story-title">
           <div class="story-head">
-            <p class="story-eyebrow" data-i18n="story.eyebrow"></p>
-            <h2 id="story-title" data-i18n="story.title"></h2>
-            <p class="story-reveal" data-i18n="story.subtitle"></p>
+            <p class="story-eyebrow" data-i18n="story.eyebrow">Comment ça marche</p>
+            <h2 id="story-title" data-i18n="story.title">Arrêtez de rafraîchir les sites d'emploi.</h2>
+            <p class="story-reveal" data-i18n="story.subtitle">Collecter, nettoyer, livrer : chaque étape retire de la friction avant que l'offre ne vous atteigne.</p>
           </div>
 
-          <ol class="story-pipeline" data-i18n-aria-label="a11y.workflow">
-            <span class="story-progress" aria-hidden="true"><i class="story-progress-fill"></i></span>
-
+          <ol class="story-pipeline" aria-label="Étapes du produit" data-i18n-aria-label="a11y.workflow">
             <li class="story-step">
               <span class="story-step-index" aria-hidden="true">01</span>
               <div class="story-step-body">
-                <h3 data-i18n="story.steps.collect.title"></h3>
-                <p data-i18n="story.steps.collect.description"></p>
+                <h3 data-i18n="story.steps.collect.title">Collecte continue</h3>
+                <p data-i18n="story.steps.collect.description">Les sources actives sont surveillées pendant que vous continuez votre journée.</p>
               </div>
             </li>
 
             <li class="story-step">
               <span class="story-step-index" aria-hidden="true">02</span>
               <div class="story-step-body">
-                <h3 data-i18n="story.steps.clean.title"></h3>
-                <p data-i18n="story.steps.clean.description"></p>
+                <h3 data-i18n="story.steps.clean.title">Filtrage utile</h3>
+                <p data-i18n="story.steps.clean.description">Les doublons, répétitions et signaux faibles sont réduits avant publication.</p>
               </div>
             </li>
 
             <li class="story-step">
               <span class="story-step-index" aria-hidden="true">03</span>
               <div class="story-step-body">
-                <h3 data-i18n="story.steps.deliver.title"></h3>
-                <p data-i18n="story.steps.deliver.description"></p>
+                <h3 data-i18n="story.steps.deliver.title">Publication Telegram</h3>
+                <p data-i18n="story.steps.deliver.description">Les offres prêtes à consulter arrivent dans un format mobile et partageable.</p>
               </div>
             </li>
 
             <li class="story-step">
               <span class="story-step-index" aria-hidden="true">04</span>
               <div class="story-step-body">
-                <h3 data-i18n="story.steps.feed.title"></h3>
-                <p data-i18n="story.steps.feed.description"></p>
+                <h3 data-i18n="story.steps.feed.title">Flux en direct sur le site</h3>
+                <p data-i18n="story.steps.feed.description">Le même digest alimente le flux du site en temps réel — consultable sans Telegram.</p>
               </div>
             </li>
           </ol>
@@ -389,35 +397,33 @@
 
         <section id="faq" class="faq-panel" aria-labelledby="faq-title">
           <div class="faq-head">
-            <p class="faq-eyebrow" data-i18n="faq.eyebrow"></p>
-            <h2 id="faq-title" data-i18n="faq.title"></h2>
-            <p class="faq-reveal" data-i18n="faq.subtitle"></p>
+            <p class="faq-eyebrow" data-i18n="faq.eyebrow">Bon à savoir</p>
+            <h2 id="faq-title" data-i18n="faq.title">Questions fréquentes</h2>
+            <p class="faq-reveal" data-i18n="faq.subtitle">L'essentiel avant de rejoindre le canal.</p>
           </div>
 
           <ol class="faq-pipeline">
-            <span class="faq-progress" aria-hidden="true"><i class="faq-progress-fill"></i></span>
-
             <li class="faq-step">
               <span class="faq-step-index" aria-hidden="true">01</span>
               <div class="faq-step-body">
-                <h3 data-i18n="faq.items.free.question"></h3>
-                <p data-i18n="faq.items.free.answer"></p>
+                <h3 data-i18n="faq.items.free.question">Est-ce vraiment gratuit ?</h3>
+                <p data-i18n="faq.items.free.answer">Oui. L'accès au canal JobStream DZ est totalement gratuit.</p>
               </div>
             </li>
 
             <li class="faq-step">
               <span class="faq-step-index" aria-hidden="true">02</span>
               <div class="faq-step-body">
-                <h3 data-i18n="faq.items.frequency.question"></h3>
-                <p data-i18n="faq.items.frequency.answer"></p>
+                <h3 data-i18n="faq.items.frequency.question">À quelle fréquence les offres arrivent ?</h3>
+                <p data-i18n="faq.items.frequency.answer">Dès qu'une nouvelle offre apparaît sur une source, elle est publiée au cycle suivant, sur le canal comme sur le site.</p>
               </div>
             </li>
 
             <li class="faq-step">
               <span class="faq-step-index" aria-hidden="true">03</span>
               <div class="faq-step-body">
-                <h3 data-i18n="faq.items.quality.question"></h3>
-                <p data-i18n="faq.items.quality.answer"></p>
+                <h3 data-i18n="faq.items.quality.question">Comment évitez-vous les doublons ?</h3>
+                <p data-i18n="faq.items.quality.answer">Chaque annonce passe par un filtrage dédié pour limiter les répétitions dans le canal.</p>
               </div>
             </li>
           </ol>
@@ -428,20 +434,41 @@
           <img src="assets/skyline_right.png" alt="" aria-hidden="true" class="skyline skyline-right" />
 
           <div class="banner-content">
-            <h2 data-i18n="banner.title"></h2>
-            <p data-i18n="banner.subtitle"></p>
-            <a href="/cv-match/" class="join-btn banner-btn">
+            <h2 data-i18n="banner.title">Recevez les prochaines offres avant les autres.</h2>
+            <p data-i18n="banner.subtitle">Rejoignez JobStream DZ et gagnez du temps à chaque recherche.</p>
+            <a href="https://t.me/jobstream_dz" target="_blank" rel="noreferrer" class="join-btn banner-btn">
               <svg class="icon plane" aria-hidden="true"><use href="#icon-paper-plane"></use></svg>
-              <span data-i18n="banner.join"></span>
+              <span data-i18n="banner.join">Rejoindre le canal Telegram</span>
             </a>
-            <small data-i18n="banner.footnote"></small>
+            <small data-i18n="banner.footnote">Gratuit, rapide, et pensé pour les chercheurs d'emploi en Algérie</small>
           </div>
         </section>
       </main>
+
+      <footer class="site-footer">
+        <a href="#" class="brand" aria-label="JobStream DZ">
+          <img src="assets/logo.png" alt="JobStream DZ" />
+        </a>
+
+        <nav class="footer-nav" aria-label="Liens du pied de page" data-i18n-aria-label="a11y.footerNav">
+          <a href="https://t.me/jobstream_dz" target="_blank" rel="noreferrer" data-i18n="footer.telegram">Canal Telegram</a>
+          <a href="/jobs-today/" data-i18n="nav.jobsToday">Offres du jour</a>
+          <a href="/cv-match/" data-i18n="nav.cvMatch">Matching CV</a>
+          <a href="#faq" data-i18n="nav.faq">FAQ</a>
+        </nav>
+
+        <div class="lang-switch" role="group" aria-label="Choix de la langue" data-i18n-aria-label="a11y.langSwitch">
+          <button type="button" data-lang="fr" class="lang-btn is-active">FR</button>
+          <button type="button" data-lang="en" class="lang-btn">EN</button>
+          <button type="button" data-lang="ar" class="lang-btn">AR</button>
+        </div>
+
+        <small class="footer-copyright" data-i18n="footer.copyright">© 2026 JobStream DZ</small>
+      </footer>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-    <script src="script.js?v=20260602-cv-match-nav"></script>
+    <script src="script.js?v=20261016-illustrated-hero-24h"></script>
   </body>
 </html>

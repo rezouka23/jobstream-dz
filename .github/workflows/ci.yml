@@ -21,8 +21,9 @@ jobs:
       - name: Run tests
         run: pytest
       - name: Compile Python
-        run: python -m compileall -q jobstream
+        run: python -m compileall -q jobstream jobstreamdz main.py
       - name: Check frontend JavaScript
         run: |
           node --check landing/script.js
           node --check cv-match/script.js
+          node --check jobs-today/script.js

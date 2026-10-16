@@ -27,6 +27,8 @@ SHEET_END_COL = "Z"
 
 _rate_limit_hits: dict[str, list[float]] = {}
 _rate_limit_lock = Lock()
+_recent_jobs_cache: dict[int, tuple[float, dict[str, Any]]] = {}
+_recent_jobs_cache_lock = Lock()
 
 
 def _load_dotenv() -> None:
@@ -58,7 +60,7 @@ def _sheet_config() -> tuple[str, str]:
     return spreadsheet_id, sheet_name
 
 
-def _fetch_rows(*, max_rows: int) -> list[dict[str, str]]:
+def _fetch_rows(*, max_rows: int | None) -> list[dict[str, str]]:
     spreadsheet_id, sheet_name = _sheet_config()
     try:
         return fetch_sheet_rows(
@@ -167,11 +169,13 @@ def _public_job(
     return job
 
 
-def _recent_jobs_payload(*, days: int, limit: int, matchable: bool = False) -> dict[str, Any]:
+def _recent_jobs_payload(
+    *, days: int, limit: int, matchable: bool = False, scan_all: bool = False
+) -> dict[str, Any]:
     now = datetime.now(ALGERIA_TZ)
     window_end = now.date()
     window_start = window_end - timedelta(days=days - 1)
-    rows = _fetch_rows(max_rows=_env_int("JOBS_MAX_ROWS", 1000, minimum=25, maximum=5000))
+    rows = _fetch_rows(max_rows=None if scan_all else _env_int("JOBS_MAX_ROWS", 1000, minimum=25, maximum=5000))
     jobs: list[dict[str, str]] = []
     seen: set[str] = set()
     skipped_without_links = 0
@@ -201,6 +205,12 @@ def _recent_jobs_payload(*, days: int, limit: int, matchable: bool = False) -> d
         )
         if limit and len(jobs) >= limit:
             break
+
+    if scan_all:
+        jobs.sort(key=lambda job: (
+            _parse_iso_datetime(job["added_at"]) or
+            datetime.fromisoformat(job["arrival_date"]).replace(tzinfo=ALGERIA_TZ)
+        ).timestamp(), reverse=True)
 
     return {
         "date": window_end.isoformat(),
@@ -315,6 +325,20 @@ def jobs_today(days: int = Query(1, ge=1, le=30)) -> dict[str, Any]:
         days=min(days, max_days),
         limit=_env_int("JOBS_LIMIT", 150, minimum=1, maximum=500),
     )
+
+
+@app.get("/api/jobs/recent")
+def recent_jobs(days: int = Query(7, ge=1, le=7)) -> dict[str, Any]:
+    # Cache full-window reads separately from the small digest/today responses.
+    with _recent_jobs_cache_lock:
+        now = time.monotonic()
+        cached = _recent_jobs_cache.get(days)
+        today = datetime.now(ALGERIA_TZ).date().isoformat()
+        if cached and now < cached[0] and cached[1]["date"] == today:
+            return cached[1]
+        payload = _recent_jobs_payload(days=days, limit=0, scan_all=True)
+        _recent_jobs_cache[days] = (time.monotonic() + 120, payload)
+        return payload
 
 
 @app.post("/api/cv/match")

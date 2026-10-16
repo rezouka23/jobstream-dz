@@ -17,7 +17,8 @@ const STRINGS = {
       kicker: "Matching intelligent",
       title: "Trouvez les offres qui <span>collent à votre CV.</span>",
       subtitle: "Importez votre CV. JobStream DZ analyse votre profil avec OpenAI, puis compare vos compétences aux offres ajoutées dans la feuille principale ces 7 derniers jours.",
-      feedLink: "Voir le flux des offres",
+      todayLink: "Voir toutes les offres du jour",
+      telegramLink: "Recevoir les prochaines offres",
       uploadTitle: "Déposez votre CV",
       uploadHint: "PDF, DOCX ou TXT, 5 MB maximum",
       noFile: "Aucun fichier sélectionné",
@@ -71,7 +72,8 @@ const STRINGS = {
       kicker: "Smart matching",
       title: "Find jobs that <span>fit your CV.</span>",
       subtitle: "Upload your CV. JobStream DZ extracts your profile with OpenAI, then compares your skills against main-sheet jobs added in the last 7 days.",
-      feedLink: "Browse the job feed",
+      todayLink: "Browse today's jobs",
+      telegramLink: "Get the next jobs",
       uploadTitle: "Drop your CV",
       uploadHint: "PDF, DOCX, or TXT, 5 MB max",
       noFile: "No file selected",
@@ -125,7 +127,8 @@ const STRINGS = {
       kicker: "مطابقة ذكية",
       title: "اعثر على وظائف <span>تناسب سيرتك الذاتية.</span>",
       subtitle: "ارفع سيرتك الذاتية. يستخرج JobStream DZ ملفك المهني عبر OpenAI ثم يقارنه بوظائف الورقة الرئيسية المضافة خلال آخر 7 أيام.",
-      feedLink: "تصفح قائمة الوظائف",
+      todayLink: "تصفح وظائف اليوم",
+      telegramLink: "استقبل الوظائف القادمة",
       uploadTitle: "ارفع سيرتك الذاتية",
       uploadHint: "PDF أو DOCX أو TXT، بحد أقصى 5 MB",
       noFile: "لم يتم اختيار ملف",
@@ -321,7 +324,8 @@ function renderStateBlock({ tone, icon, title, message, dict }) {
       <h3>${escapeHtml(title)}</h3>
       <p>${escapeHtml(message)}</p>
       <div class="cv-state-actions">
-        <a class="cv-text-link" href="/landing/#live-feed">${escapeHtml(dict.cv.feedLink)}</a>
+        <a class="cv-text-link" href="/jobs-today/">${escapeHtml(dict.cv.todayLink)}</a>
+        <a class="cv-text-link" href="https://t.me/jobstream_dz" target="_blank" rel="noreferrer">${escapeHtml(dict.cv.telegramLink)}</a>
       </div>
     </div>`;
 }

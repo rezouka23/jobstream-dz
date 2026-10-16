@@ -121,11 +121,11 @@ def fetch_sheet_rows(
     service: Any,
     spreadsheet_id: str,
     sheet_name: str,
-    max_rows: int,
+    max_rows: int | None,
     end_col: str = "Z",
 ) -> list[dict[str, str]]:
     """Read a sheet range and map normalized headers to string cell values."""
-    target_range = f"{sheet_name}!A1:{end_col}{max_rows}"
+    target_range = f"{sheet_name}!A1:{end_col}{max_rows or ''}"
     response = (
         service.spreadsheets()
         .values()
