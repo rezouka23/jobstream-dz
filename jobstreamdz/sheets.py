@@ -62,6 +62,7 @@ def build_sheets_service(
     *,
     service_account_file: str | None,
     service_account_json: dict[str, Any] | None,
+    timeout: float | None = None,
 ) -> Any:
     if service_account_json is not None:
         credentials = Credentials.from_service_account_info(
@@ -74,6 +75,11 @@ def build_sheets_service(
     else:
         raise ValueError("Missing Google service account credentials")
 
+    if timeout is not None:
+        import httplib2
+        from google_auth_httplib2 import AuthorizedHttp
+        http = AuthorizedHttp(credentials, http=httplib2.Http(timeout=timeout))
+        return build("sheets", "v4", http=http, cache_discovery=False)
     return build("sheets", "v4", credentials=credentials, cache_discovery=False)
 
 
@@ -88,21 +94,38 @@ def _to_text(value: Any) -> str:
 
 
 def fetch_sheet_rows(
-    service: Any, spreadsheet_id: str, sheet_name: str, max_rows: int | None, end_col: str = "Q"
+    service: Any, spreadsheet_id: str, sheet_name: str, max_rows: int | None, end_col: str = "Q",
+    public_only: bool = False,
 ) -> list[dict[str, str]]:
     target_range = f"{sheet_name}!A1:{end_col}{max_rows or ''}"
-    response = (
-        service.spreadsheets()
-        .values()
-        .get(
+    if public_only:
+        # Description is column Q in both supported job schemas. Public cards do
+        # not use it; omit those large cells without clipping the row count.
+        response = service.spreadsheets().values().batchGet(
             spreadsheetId=spreadsheet_id,
-            range=target_range,
+            ranges=[f"{sheet_name}!A1:P{max_rows or ''}", f"{sheet_name}!R1:{end_col}{max_rows or ''}"],
             valueRenderOption="FORMATTED_VALUE",
+        ).execute()
+        ranges = response.get("valueRanges", [])
+        left = ranges[0].get("values", []) if ranges else []
+        right = ranges[1].get("values", []) if len(ranges) > 1 else []
+        values = []
+        for index in range(max(len(left), len(right))):
+            first = left[index] if index < len(left) else []
+            last = right[index] if index < len(right) else []
+            values.append(first + [""] * (17 - len(first)) + last)
+    else:
+        response = (
+            service.spreadsheets()
+            .values()
+            .get(
+                spreadsheetId=spreadsheet_id,
+                range=target_range,
+                valueRenderOption="FORMATTED_VALUE",
+            )
+            .execute()
         )
-        .execute()
-    )
-
-    values = response.get("values", [])
+        values = response.get("values", [])
     if not values:
         return []
 

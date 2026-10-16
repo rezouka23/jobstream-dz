@@ -1,9 +1,11 @@
 from __future__ import annotations
 
 import json
+import hashlib
 import os
 import time
 from datetime import date, datetime, timedelta, timezone
+from contextlib import asynccontextmanager
 from pathlib import Path
 from threading import Lock
 from typing import Any
@@ -16,6 +18,7 @@ from fastapi.staticfiles import StaticFiles
 
 from .cv_matcher import CVProfileError, extract_candidate_profile, rank_jobs_for_profile
 from .cv_parser import CVParseError, extract_cv_text
+from .feed_cache import FeedUnavailable, PublicFeedCache
 from .sheets import build_sheets_service, extract_apply_url, fetch_sheet_rows, fingerprint_job
 
 
@@ -160,12 +163,7 @@ def _load_service_account_json(raw: str) -> dict[str, Any]:
     return data
 
 
-def _jobs_sheet_service() -> Any:
-    global _sheets_service
-
-    if _sheets_service is not None:
-        return _sheets_service
-
+def _create_jobs_sheet_service(*, timeout: float | None = None) -> Any:
     service_account_json_raw = os.getenv("GOOGLE_SERVICE_ACCOUNT_JSON", "").strip()
     service_account_file_raw = os.getenv("GOOGLE_SERVICE_ACCOUNT_FILE", "").strip()
 
@@ -178,10 +176,17 @@ def _jobs_sheet_service() -> Any:
     else:
         raise HTTPException(status_code=500, detail="Google Sheets credentials are not configured")
 
-    _sheets_service = build_sheets_service(
+    return build_sheets_service(
         service_account_file=service_account_file,
         service_account_json=service_account_json,
+        timeout=timeout,
     )
+
+
+def _jobs_sheet_service() -> Any:
+    global _sheets_service
+    if _sheets_service is None:
+        _sheets_service = _create_jobs_sheet_service()
     return _sheets_service
 
 
@@ -397,6 +402,7 @@ def _rolling_recent_payload(payload: dict[str, Any], now: datetime) -> dict[str,
             and cutoff <= stamp <= now]
     return {
         **payload,
+        "date": now.date().isoformat(),
         "job_count": len(jobs),
         "jobs": jobs,
         "meta": {
@@ -412,17 +418,21 @@ def _rolling_recent_payload(payload: dict[str, Any], now: datetime) -> dict[str,
     }
 
 
-def _today_payload(*, days: int = 1, scan_all: bool = False, hours: int | None = None) -> dict[str, Any]:
+def _today_payload(
+    *, days: int = 1, scan_all: bool = False, hours: int | None = None,
+    service: Any = None, public_only: bool = False,
+) -> dict[str, Any]:
     now = datetime.now(ALGERIA_TZ)
     today = now.date()
     window_start = today - timedelta(days=days - 1)
-    service = _jobs_sheet_service()
+    service = _jobs_sheet_service() if service is None else service
     rows = fetch_sheet_rows(
         service=service,
         spreadsheet_id=_spreadsheet_id(),
         sheet_name=_sheet_name(),
         max_rows=None if scan_all else _today_jobs_max_rows(),
         end_col=TODAY_SHEET_END_COL,
+        **({"public_only": True} if public_only else {}),
     )
 
     jobs: list[dict[str, str]] = []
@@ -679,8 +689,36 @@ def _recent_jobs(primary_payload: dict[str, Any], *, limit: int) -> list[dict[st
     return jobs[:limit]
 
 
+def _load_homepage_feed() -> dict[str, Any]:
+    # Give each background refresh its own HTTP client; httplib2 clients must
+    # not be shared concurrently with Today's jobs or CV Match requests.
+    service = _create_jobs_sheet_service(timeout=20)
+    try:
+        return _today_payload(scan_all=True, hours=24, service=service, public_only=True)
+    finally:
+        close = getattr(service, "close", None)
+        if callable(close):
+            close()
+
+
 _load_dotenv_if_available()
-app = FastAPI(title="JobStream DZ API", version="0.1.0")
+_homepage_feed_cache = PublicFeedCache(
+    _load_homepage_feed,
+    snapshot_path=REPO_ROOT / ".cache" / "homepage-24h.json",
+    namespace=hashlib.sha256(f"{os.getenv('SPREADSHEET_ID', '')}|{_sheet_name()}|24h".encode()).hexdigest(),
+)
+
+
+@asynccontextmanager
+async def _lifespan(app: FastAPI):
+    _homepage_feed_cache.start()
+    try:
+        yield
+    finally:
+        _homepage_feed_cache.stop()
+
+
+app = FastAPI(title="JobStream DZ API", version="0.1.0", lifespan=_lifespan)
 
 if LANDING_DIR.exists():
     app.mount(
@@ -760,16 +798,22 @@ def recent_jobs(
     days: int = Query(7, ge=1, le=7),
     hours: int | None = Query(None, ge=24, le=24),
 ) -> dict[str, Any]:
-    key = ("hours", hours) if hours is not None else ("days", days)
+    if hours is not None:
+        try:
+            payload = _homepage_feed_cache.get()
+        except FeedUnavailable:
+            raise HTTPException(status_code=503, detail="Jobs are temporarily unavailable. Please retry.") from None
+        return _rolling_recent_payload(payload, datetime.now(ALGERIA_TZ))
+    key = ("days", days)
     with _recent_jobs_cache_lock:
         now = time.monotonic()
         clock = datetime.now(ALGERIA_TZ)
         if cached := _recent_jobs_cache.get(key):
             if now < cached[0] and cached[1]["date"] == clock.date().isoformat():
-                return _rolling_recent_payload(cached[1], clock) if hours is not None else cached[1]
-        payload = _today_payload(days=days, scan_all=True, hours=hours)
+                return cached[1]
+        payload = _today_payload(days=days, scan_all=True)
         _recent_jobs_cache[key] = (time.monotonic() + 120, payload)
-        return _rolling_recent_payload(payload, datetime.now(ALGERIA_TZ)) if hours is not None else payload
+        return payload
 
 
 @app.post("/api/cv/match")

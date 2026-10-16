@@ -16,6 +16,8 @@ def client(monkeypatch: pytest.MonkeyPatch) -> TestClient:
     monkeypatch.setenv("SPREADSHEET_ID", "test-sheet")
     monkeypatch.setenv("SHEET_NAME", "jobs")
     monkeypatch.setenv("CV_MATCH_RATE_LIMIT_REQUESTS", "3")
+    monkeypatch.setattr(api, "_create_jobs_sheet_service", lambda **_: object())
+    monkeypatch.setattr(api, "_homepage_feed_cache", api.PublicFeedCache(api._load_homepage_feed))
     return TestClient(api.app)
 
 
